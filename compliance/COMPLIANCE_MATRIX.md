@@ -9,7 +9,7 @@ This document maps the architectural pillars of F2F-RAaT to specific regulatory 
 
 | Regulation | Article | Requirement | F2F-RAaT Solution |
 | :--- | :--- | :--- | :--- |
-| **GDPR** | Art. 17 | Data subjects have the right to obtain erasure of personal data without undue delay. | **Zero-Persistence Doctrine**: Data is never stored at rest in the first place. It is processed in ephemeral RAM and destroyed immediately. |
+| **GDPR** | Art. 17 | Data subjects have the right to obtain erasure of personal data without undue delay. | **Zero-Persistence Doctrine**: Data is never stored at rest in the first place. It is processed in ephemeral RAM and cleared upon task completion. |
 | **LGPD** | Art. 18 (VI) | Holder may petition for elimination of unnecessary or excessive data. | **Crypto-Shredding**: Even if ciphertext persists, destroying the CMEK key renders it technically inaccessible (ciphertext with no surviving key). This is a technical inaccessibility control, not a legal-erasure guarantee. |
 
 ---

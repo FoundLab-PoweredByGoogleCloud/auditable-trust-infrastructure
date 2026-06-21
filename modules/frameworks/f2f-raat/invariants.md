@@ -15,7 +15,7 @@ Decision = f(FACT, STATE_CAPSULE, POLICY, RUNTIME_VERSION)
 ## Zero-persistence & Non-leakage
 
 - The runtime MUST NOT persist raw inputs, intermediate states, or side artifacts outside allowed State Capsule + Veritas commitments.  
-- Any transient buffers MUST be zeroized at end-of-execution.  
+- Any transient buffers MUST be cleared at end-of-execution.  
 - The runtime MUST NOT emit outputs whose entropy or length can encode sensitive data (“exfiltration-by-output”).
 
 ## Constant-time & Fail-Closed

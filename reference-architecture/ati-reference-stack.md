@@ -72,7 +72,7 @@ The category-level rules every layer must honor are the **[Category Invariants](
 
 ## Packaging & deployment
 
-The stack is composed **per deployment** against an assurance profile, not shipped as a fixed monolith. Layers L0/L2/L4 are platform-dependent; L1/L3/L5 are the ATI-specific planes. Because the composition is deployment-scoped and consumption-metered, it is well suited to delivery as a **cloud-marketplace private offer**, where each layer's assurance profile and certification status is fixed for that specific deployment.
+The stack is composed **per deployment** against an assurance profile, not shipped as a fixed monolith. Layers L0/L2/L4 are platform-dependent; L1/L3/L5 are the ATI-specific planes. Because the composition is deployment-scoped and consumption-metered, it is well suited to delivery as a **cloud-marketplace enterprise offering**, where each layer's assurance profile and certification status is fixed for that specific deployment.
 
 > **Certification.** Production and certification status are tracked **per deployment**. This document describes a reference composition; it does not assert blanket production readiness for any layer.
 

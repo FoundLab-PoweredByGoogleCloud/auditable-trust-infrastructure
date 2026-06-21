@@ -10,7 +10,7 @@ This impact is felt across three domains: Financial, Commercial, and Architectur
 
 We have engineered a Go-to-Market strategy that bypasses traditional, slow enterprise sales cycles by aligning with the client's existing financial commitments.
 
-- **The "Budget Hack":** The ATI is sold as an infrastructure consumption service via a **Private Offer** on the Google Cloud Marketplace. This allows clients to use their pre-approved **Committed Use Discount (CUD)** budget to pay for the solution.
+- **The "Budget Hack":** The ATI is sold as an infrastructure consumption service via a **private enterprise offering** on the Google Cloud Marketplace. This allows clients to use their pre-approved **Committed Use Discount (CUD)** budget to pay for the solution.
 - **The Result:** The marginal cost of acquisition approaches zero for the client, as they are using money already allocated. This reduces the sales cycle from **12-18 months to a matter of weeks**.
 
 This strategy also transforms the Google Cloud sales team into a force multiplier, as promoting FoundLab helps them retire their clients' CUD quotas.
