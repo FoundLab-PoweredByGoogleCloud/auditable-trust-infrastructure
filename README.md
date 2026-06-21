@@ -57,6 +57,22 @@ Full treatment in **[category/02 — Trust by Physics](category/02_trust-by-phys
 
 ---
 
+## Whitepapers
+
+### ATI Category Whitepaper
+
+The ATI whitepaper defines Auditable Trust Infrastructure as a category for verifiable AI evidence in regulated environments.
+
+- PDF: `whitepaper/ati/FoundLab_ATI_Whitepaper_v1.1_A4.pdf`
+- Source HTML/CSS: `whitepaper/ati/source/`
+
+### F2F-RaaT Framework Whitepaper
+
+F2F-RaaT is a normative execution framework within ATI. It is not the category itself.
+
+- Specification: `whitepaper/f2f-raat/F2F-RAAT_WHITEPAPER_v1.1.md`
+- Diagrams: `whitepaper/f2f-raat/diagrams/`
+
 ## How this repository is organized
 
 ```text
