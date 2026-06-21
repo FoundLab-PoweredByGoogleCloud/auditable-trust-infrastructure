@@ -1,7 +1,7 @@
 # The Burn Engine
 > **"Finality is a feature. Decisions must close the loop."**
 
-The **Burn Engine** is the deterministic actuator of F2F-RAaT. It consumes state and produces binding effects.
+The **Burn Engine** is the deterministic actuator within ATI — the effect-selection stage of the F2F-RAaT execution framework. It consumes state and produces binding effects.
 
 While other systems produce "alerts" for humans to review, the Burn Engine is designed to **execute**. It is the bridge between "knowing" (Risk State) and "doing" (Block/Allow).
 

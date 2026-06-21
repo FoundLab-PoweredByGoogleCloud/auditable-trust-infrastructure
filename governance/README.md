@@ -3,7 +3,7 @@
 
 In a decentralized or automated system, Governance is the most critical attack vector. If an attacker controls the Policy, they control the Truth.
 
-This directory defines the **Cryptographic Governance Layer** that secures the F2F-RAaT runtime against internal corruption and unauthorized changes.
+This directory defines the **Cryptographic Governance Layer** that secures the ATI runtime (and its F2F-RAaT execution framework) against internal corruption and unauthorized changes.
 
 ---
 
@@ -38,7 +38,7 @@ In case of catastrophic AI failure (e.g., blocking all users), we have a kinetic
 *   **No Silent Edits**: Every administrative action leaves a hash on the Veritas Ledger.
 *   **No Single Point of Failure**: Critical changes require M-of-N consensus.
 *   **Time-Lock**: Major policy shifts have a mandatory delay before activation.
-*   **Regulatory Alignment**: See **[Compliance Matrix](../compliance/COMPLIANCE_MATRIX.md)** for BACEN Res. 4.968 mapping.
+*   **Regulatory Alignment**: See **[Compliance Matrix](../compliance/COMPLIANCE_MATRIX.md)** for CMN 4.968/2021 (internal controls) and CMN/BCB cybersecurity-framework mapping.
 
 ---
 

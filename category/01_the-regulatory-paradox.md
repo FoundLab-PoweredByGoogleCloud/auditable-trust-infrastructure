@@ -10,8 +10,8 @@ This is the **Retention Paradox**.
 
 | Mandate | Requirement | Representative Regulation | Consequence of Failure |
 | :--- | :--- | :--- | :--- |
-| **The Mandate to Retain** | Audit records must be preserved immutably for 5-10 years to allow for independent verification. | BACEN (Res. CMN 4.893), Sarbanes-Oxley (SOX) | Charges of evidence destruction; massive fines. |
-| **The Mandate to Erase** | Personal data must be permanently deleted upon request under the "Right to be Forgotten". | LGPD (Brazil), GDPR (EU) | Severe privacy violation penalties. |
+| **The Mandate to Retain** | Audit records and the integrity of evidence must be preserved and independently inspectable over multi-year horizons. | CMN 4.893/2021 *(as amended by CMN 5.274/2025)* · BCB 538/2025 *(amending BCB 85/2021)* · SOX · EU AI Act Art. 12 | Charges of evidence destruction; massive fines. |
+| **The Mandate to Erase** | Personal data must be eliminated upon request, and processing held to the minimum necessary. | LGPD Art. 16 / Art. 18 VI / Art. 6º III (Brazil) · GDPR Art. 17 (EU) | Severe privacy violation penalties. |
 
 This paradox transforms sensitive data from a business enabler into a **"Toxic Data Asset"**. Storing it risks privacy violations; deleting it risks compliance violations.
 

@@ -8,6 +8,7 @@
 
 The "why" before the "how". Read in order:
 
+0. **[The Category Thesis](category/00_category-thesis.md)** — the founding document: why policy-based trust fails, why GRC/XAI/SIEM/observability don't solve it, the definition, and the invariants as the membership test.
 1. **[The Regulatory Paradox](category/01_the-regulatory-paradox.md)** — why institutions are trapped between retention and erasure.
 2. **[Trust by Physics](category/02_trust-by-physics-pillars.md)** — the three pillars: Zero-Persistence, WORM, Crypto-Shredding.
 3. **[Cognitive Auditability](category/03_cognitive-auditability.md)** — imposing deterministic, provable controls on generative AI.
@@ -51,7 +52,7 @@ How to prove it is safe and compliant.
 
 - **[Veritas proof spec](modules/frameworks/veritas/veritas_proof_spec.md)** — how the audit trail works.
 - **[Threat model](modules/frameworks/threat-model/README.md)** — defense against poisoning and adversarial vectors.
-- **[Compliance matrix](compliance/COMPLIANCE_MATRIX.md)** — regulatory mapping (LGPD / GDPR / BCB / SOX).
+- **[Compliance matrix](compliance/COMPLIANCE_MATRIX.md)** — regulatory mapping (LGPD / GDPR / EU AI Act / CMN-BCB / SOX).
 - **[Cognitive Auditability](category/03_cognitive-auditability.md)** — proving AI intent.
 
 ---

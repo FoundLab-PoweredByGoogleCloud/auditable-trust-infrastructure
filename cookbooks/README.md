@@ -1,7 +1,7 @@
-# F2F-RAaT Cookbooks
+# ATI Cookbooks
 > **"Theory in Practice."**
 
-This directory contains real-world scenarios and attacks to demonstrate how the F2F-RAaT engine responds to specific threats.
+This directory contains real-world scenarios and attacks to demonstrate how the ATI execution layer — the **F2F-RAaT** framework — responds to specific threats.
 
 ## 🥘 Recipes
 

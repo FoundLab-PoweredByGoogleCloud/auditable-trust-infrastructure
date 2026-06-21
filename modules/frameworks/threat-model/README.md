@@ -1,7 +1,7 @@
 # Threat Model & Mitigations
 > **"Assume the adversary is inside the system."**
 
-This directory details the adversarial vectors against F2F-RAaT and the architectural mitigations ("Trust by Physics") that neutralize them.
+This directory details the adversarial vectors against an ATI deployment — and its F2F-RAaT execution framework — and the architectural mitigations ("Trust by Physics") that counter them.
 
 We do not rely on "security through obscurity". We rely on mathematical constraints.
 
@@ -23,7 +23,7 @@ We do not rely on "security through obscurity". We rely on mathematical constrai
 
 What if the system blocks a VIP or fails critically?
 
-F2F-RAaT implements a **Cryptographic Break-Glass**:
+ATI implements a **Cryptographic Break-Glass**:
 1.  Human overrides are permitted ONLY by signing a specific `OverrideToken`.
 2.  This token is appended to the user's permanent `VeritasProof` chain.
 3.  **Consequence**: You can override the AI, but you cannot hide that you did it.

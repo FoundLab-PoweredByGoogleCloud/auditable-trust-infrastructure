@@ -8,7 +8,7 @@ This directory contains resources for Quality Assurance (QA) and Regulatory Comp
 | Resource | Purpose |
 | :--- | :--- |
 | **[`compliance_vectors_v1.json`](compliance_vectors_v1.json)** | **Test Vectors**. A set of inputs and expected outputs for validating implementation correctness. |
-| **[`COMPLIANCE_MATRIX.md`](COMPLIANCE_MATRIX.md)** | **Legal Mapping**. Cross-reference between F2F-RAaT architectural features and GDPR/LGPD/BACEN Articles. |
+| **[`COMPLIANCE_MATRIX.md`](COMPLIANCE_MATRIX.md)** | **Legal Mapping**. Cross-reference between ATI architectural pillars and GDPR / LGPD / EU AI Act / CMN-BCB articles. |
 
 ---
 [⬅️ Back to ATI Index](../README.md)
