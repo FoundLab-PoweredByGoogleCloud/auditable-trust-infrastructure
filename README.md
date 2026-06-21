@@ -80,6 +80,8 @@ ATI/
 │
 ├── reference-architecture/    # public, sanitized reference SAD for regulated GenAI
 ├── whitepaper/                # the deep-dive theory
+│   ├── ati/                   #   ATI category whitepaper (PDF & sources)
+│   └── f2f-raat/              #   F2F-RAaT framework whitepaper
 ├── governance/                # policy signing, break-glass control
 ├── compliance/                # regulatory mapping + test vectors
 ├── interface-contracts/       # OpenAPI + canonical Fact schemas

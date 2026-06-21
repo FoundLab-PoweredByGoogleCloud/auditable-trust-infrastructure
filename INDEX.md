@@ -62,7 +62,7 @@ The value and the moat.
 
 - **[Strategic Impact](category/04_strategic-impact.md)** — operational advantage from architectural compliance.
 - **[The Regulatory Paradox](category/01_the-regulatory-paradox.md)** — the problem in one page.
-- **[Whitepaper](whitepaper/F2F-RAAT_WHITEPAPER_v1.1.md)** — the full theory.
+- **[Whitepaper](whitepaper/f2f-raat/F2F-RAAT_WHITEPAPER_v1.1.md)** — the full theory.
 - **[REX Guard whitepaper](modules/products/rex-guard/rex-guard-whitepaper.md)** — the product thesis.
 
 ---
