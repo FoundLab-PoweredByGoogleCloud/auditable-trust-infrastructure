@@ -189,7 +189,7 @@ proof = sign( H(transcript ‖ ts ‖ ctx) )                                   (
 3. **Intenção.** A transcrição `τ` é classificada por Gemini via *function calling*, produzindo uma estrutura tipada `Intent = {action, params, confidence}`. O prompt do sistema fixa o esquema; respostas fora do schema são rejeitadas antes da assinatura.
 4. **Hash.** Computa-se `h = SHA-256(τ ‖ t_iso ‖ ctx)`, onde `ctx` inclui sessão, agente e versão de modelo. A concatenação canônica usa JCS (RFC 8785) para garantir determinismo entre cliente e verificador.
 5. **Assinatura.** O hash `h` é assinado com Ed25519 (chave do agente, custodiada em HSM), produzindo `σ = Sign_sk(h)`. O recibo final `R = (τ, t, ctx, σ, pk_id)` é verificável por qualquer terceiro com acesso à chave pública.
-6. **Purga.** Imediatamente após a assinatura, o buffer de áudio é sobrescrito (`buffer.fill(0)`), as referências liberadas e o GC forçado. A flag `payload_persisted = false` é propagada no recibo como invariante auditável.
+6. **Purga.** Imediatamente após a assinatura, as referências do buffer de áudio são liberadas e o GC forçado. Como o `Blob` é imutável em JS, a garantia é de **não-persistência** (nada é escrito em disco), não de sobrescrita byte-a-byte em memória; onde se exige zeroização explícita, processa-se PCM bruto em typed array mutável. A flag `payload_persisted = false` é propagada no recibo como invariante auditável.
 
 ```
 R = ( τ, t, ctx, Sign_sk(H(τ ‖ t ‖ ctx)) )                                 (4)
@@ -203,7 +203,7 @@ const τ = await stt.stream(buf);      // (02)
 const I = await gemini.intent(τ);     // (03)
 const h = sha256(jcs({τ, t, ctx}));   // (04)
 const σ = ed25519.sign(sk, h);        // (05)
-buf.fill(0); buf.length = 0;          // (06)
+buf.length = 0;                       // (06) libera refs (Blob imutável); nada persistido
 return { τ, t, ctx, σ, payload_persisted: false };
 ```
 
@@ -343,19 +343,19 @@ verify(v) = sig(state) ∧ hash↔chain   ·   latência típica end-to-end: 42 
 
 > O Burn Engine implementa um protocolo determinístico que, por construção criptográfica, torna o dado-em-claro tecnicamente inacessível após o uso operacional — persistindo apenas o compromisso `(h, σ)`.
 
-No instante `t₀`, o dado-em-claro `d` é submetido a uma função de compromisso hash `h = H(d ∥ r)`, onde `r` é entropia efêmera amostrada dentro do enclave; o par `(d, r)` existe apenas em memória volátil isolada. Em `t₁`, executa-se a assinatura operacional `σ = Sign(k_e, h)`, vinculando o compromisso ao evento regulatório. Em `t₂`, o protocolo de queima zeroiza `d` e `r` na memória volátil do enclave e aplica crypto-shred à chave efêmera `k_e` — controle de inacessibilidade técnica, não sobrescrita de mídia —, descartando a entropia geradora; após `t₂`, apenas `h` persiste.
+No instante `t₀`, o dado-em-claro `d` é submetido a uma função de compromisso hash `h = H(d ∥ r ∥ msg)`, onde `r` é entropia efêmera amostrada dentro do enclave e `msg` é o evento regulatório vinculado; o par `(d, r)` existe apenas em memória volátil isolada. Em `t₁`, executa-se a assinatura operacional `σ = Sign(k_e, h)`, vinculando o compromisso ao evento regulatório. Em `t₂`, o protocolo de queima zeroiza `d` e `r` na memória volátil do enclave e aplica crypto-shred à chave efêmera `k_e` — controle de inacessibilidade técnica, não sobrescrita de mídia —, descartando a entropia geradora; após `t₂`, apenas `h` persiste.
 
 A propriedade *zero-exposure* decorre da resistência à pré-imagem de `H`: o auditor verifica `σ` contra `h` sem jamais observar `d`. A trilha de auditoria registra somente `(h, σ, t)`, alinhando-se à minimização da LGPD por construção: o controlador não depende de uma política de não-retenção — o dado-em-claro não é persistido pela arquitetura. A minimização deixa de ser promessa operacional e torna-se invariante estrutural.
 
 ```
-h = H(d ∥ r) ;  σ = Sign(k_e, h) ;  burn(d, r, k_e)  ⇒  Pr[recover d ∣ h, σ] ≤ 2^−λ   (7)
+h = H(d ∥ r ∥ msg) ;  σ = Sign(k_e, h) ;  burn(d, r, k_e)  ⇒  Pr[recover d ∣ h, σ] ≤ 2^−λ   (7)
 ```
 
 ```python
 def burn_engine(d, msg):
     # t0: commitment phase
     r   = enclave_entropy(λ=256)
-    h   = H(d || r)                # binding
+    h   = H(d || r || msg)         # binding (data + evento)
     k_e = kdf(seed, nonce)         # ephemeral
     sig = sign(k_e, h)             # one-shot
     # t1: deterministic destruction

@@ -400,7 +400,7 @@ a.toclink:hover{border-bottom-color:var(--destaque)}
     <li><span class="t"><b>Intenção.</b> A transcrição τ é classificada por Gemini via <em>function calling</em>, produzindo uma estrutura tipada <code>Intent = {action, params, confidence}</code>. O prompt do sistema fixa o esquema; respostas fora do schema são rejeitadas antes da assinatura.</span></li>
     <li><span class="t"><b>Hash.</b> Computa-se <code>h = SHA-256(τ ‖ t_iso ‖ ctx)</code>, onde <code>ctx</code> inclui sessão, agente e versão de modelo. A concatenação canônica usa JCS (RFC 8785) para garantir determinismo entre cliente e verificador.</span></li>
     <li><span class="t"><b>Assinatura.</b> O hash <code>h</code> é assinado com Ed25519 (chave do agente, custodiada em HSM), produzindo σ = Sign<sub>sk</sub>(h). O recibo final R = (τ, t, ctx, σ, pk_id) é verificável por qualquer terceiro com acesso à chave pública.</span></li>
-    <li><span class="t"><b>Purga.</b> Imediatamente após a assinatura, o buffer de áudio é sobrescrito (<code>buffer.fill(0)</code>), as referências liberadas e o GC forçado. A flag <code>payload_persisted = false</code> é propagada no recibo como invariante auditável.</span></li>
+    <li><span class="t"><b>Purga.</b> Imediatamente após a assinatura, as referências do buffer de áudio são liberadas e o GC forçado. Como o <code>Blob</code> é imutável em JS, a garantia é de <b>não-persistência</b> (nada escrito em disco), não de sobrescrita byte-a-byte em memória; onde se exige zeroização explícita, processa-se PCM bruto em typed array mutável. A flag <code>payload_persisted = false</code> é propagada no recibo como invariante auditável.</span></li>
   </ol>
 
   <div class="eq tight">
@@ -417,7 +417,7 @@ const τ = await stt.stream(buf);      <span class="c">// (02)</span>
 const I = await gemini.intent(τ);     <span class="c">// (03)</span>
 const h = sha256(jcs({τ, t, ctx}));   <span class="c">// (04)</span>
 const σ = ed25519.sign(sk, h);        <span class="c">// (05)</span>
-buf.fill(0); buf.length = 0;          <span class="c">// (06)</span>
+buf.length = 0;                       <span class="c">// (06) libera refs (Blob imutável); nada persistido</span>
 return { τ, t, ctx, σ, payload_persisted: false };</pre>
   </div>
 
@@ -643,12 +643,12 @@ return { τ, t, ctx, σ, payload_persisted: false };</pre>
   <p class="standfirst">O Burn Engine implementa um protocolo determinístico que, por construção criptográfica, torna o dado-em-claro tecnicamente inacessível após o uso operacional — persistindo apenas o compromisso (h, σ).</p>
 
   <div class="cols2">
-    <p>No instante t₀, o dado-em-claro d é submetido a uma função de compromisso hash <code>h = H(d ∥ r)</code>, onde r é entropia efêmera amostrada dentro do enclave; o par (d, r) existe apenas em memória volátil isolada. Em t₁, executa-se a assinatura operacional σ = Sign(k<sub>e</sub>, h), vinculando o compromisso ao evento regulatório. Em t₂, o protocolo de queima zeroiza d e r na memória volátil do enclave e aplica crypto-shred à chave efêmera k<sub>e</sub> — controle de inacessibilidade técnica, não sobrescrita de mídia —, descartando a entropia geradora; após t₂, apenas h persiste.</p>
+    <p>No instante t₀, o dado-em-claro d é submetido a uma função de compromisso hash <code>h = H(d ∥ r ∥ msg)</code>, onde r é entropia efêmera amostrada dentro do enclave e msg é o evento regulatório vinculado; o par (d, r) existe apenas em memória volátil isolada. Em t₁, executa-se a assinatura operacional σ = Sign(k<sub>e</sub>, h), vinculando o compromisso ao evento regulatório. Em t₂, o protocolo de queima zeroiza d e r na memória volátil do enclave e aplica crypto-shred à chave efêmera k<sub>e</sub> — controle de inacessibilidade técnica, não sobrescrita de mídia —, descartando a entropia geradora; após t₂, apenas h persiste.</p>
     <p>A propriedade <em>zero-exposure</em> decorre da resistência à pré-imagem de H: o auditor verifica σ contra h sem jamais observar d. A trilha de auditoria registra somente (h, σ, t), alinhando-se à minimização da LGPD <em>by construction</em>: o controlador não depende de uma política de não-retenção — o dado-em-claro não é persistido pela arquitetura. A minimização deixa de ser promessa operacional e torna-se invariante estrutural.</p>
   </div>
 
   <div class="eq tight">
-    <span class="ex">h = H(d ∥ r) ;&nbsp; σ = Sign(k<sub>e</sub>, h) ;&nbsp; burn(d, r, k<sub>e</sub>) &nbsp;⇒&nbsp; Pr[recover d ∣ h, σ] ≤ 2<sup>−λ</sup></span>
+    <span class="ex">h = H(d ∥ r ∥ msg) ;&nbsp; σ = Sign(k<sub>e</sub>, h) ;&nbsp; burn(d, r, k<sub>e</sub>) &nbsp;⇒&nbsp; Pr[recover d ∣ h, σ] ≤ 2<sup>−λ</sup></span>
     <span class="eqno">(7)</span>
   </div>
 
@@ -657,7 +657,7 @@ return { τ, t, ctx, σ, payload_persisted: false };</pre>
 <pre class="code"><span class="kw">def</span> burn_engine(d, msg):
     <span class="c"># t0: commitment phase</span>
     r   = enclave_entropy(λ=256)
-    h   = H(d || r)                <span class="c"># binding</span>
+    h   = H(d || r || msg)         <span class="c"># binding (data + evento)</span>
     k_e = kdf(seed, nonce)         <span class="c"># ephemeral</span>
     sig = sign(k_e, h)             <span class="c"># one-shot</span>
     <span class="c"># t1: deterministic destruction</span>
