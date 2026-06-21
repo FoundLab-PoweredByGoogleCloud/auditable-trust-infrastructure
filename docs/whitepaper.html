@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Auditable Trust Infrastructure (ATI) — FoundLab Whitepaper</title>
+<link rel="stylesheet" href="./assets/screen.css">
+</head>
+<body>
+
+<!-- ============================ COVER ============================ -->
+<section class="cover">
+  <div class="cv-kick">Whitepaper · v1.0 · Junho 2026</div>
+  <h1 class="cv-title">Auditable Trust Infrastructure <span class="lo">(ATI)</span><br>Uma Nova Categoria para Governança de IA Generativa em Ambiente Regulado</h1>
+  <div class="cv-sub">A Technical Whitepaper on Verifiable AI Evidence Infrastructure</div>
+  <div class="cv-brand">FoundLab · <b>Trust by Physics.</b></div>
+  <div class="cv-loc">Verifiable AI Evidence · São Paulo · Brasil</div>
+
+  <div class="cv-abstract">
+    <span class="lab">Abstract</span>
+    <p>Firewalls protegem tráfego, mas não provam decisões de IA nem o consentimento do cliente. Este whitepaper apresenta a <strong>Auditable Trust Infrastructure (ATI)</strong> como nova categoria de infraestrutura: uma camada única que governa simultaneamente as superfícies de voz e texto, emite prova-de-decisão verificável (<em>hash-chained, time-stamped</em>) e o faz sem reter dados pessoais (conformidade LGPD) nem expor material criptográfico de chave (CMN 5.274). Argumentamos que a ATI não substitui IA — ela a torna auditável.</p>
+  </div>
+
+  <div class="cv-badges">
+    <span>Hash-Chained</span><span>Zero PII Retention</span><span>Time-Stamped</span><span>Verifiable Proof</span><span>Cryptographic Audit</span>
+  </div>
+
+  <div class="cv-foot">
+    <div class="blk">
+      <span class="lab">Preparado para</span>
+      <span class="val">Bancos Tier 1 — CISO, Legal / DPO, Arquitetura<br>Equipe Google Cloud</span>
+    </div>
+    <div class="blk">
+      <span class="lab">Versão &amp; Data</span>
+      <span class="val">v1.0 · Junho 2026<br>DOI: foundlab/ati.2026.01</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== RESUMO EXECUTIVO ===================== -->
+<section class="exec">
+  <span class="runtag">Resumo Executivo</span>
+  <p class="kicker">ATI · Auditable Trust Infrastructure</p>
+  <h2 class="h-sec section-title">Resumo Executivo</h2>
+  <hr class="rule-bronze">
+  <p class="big-claim">Firewalls protegem o tráfego. Não provam a decisão.</p>
+
+  <div class="cols2">
+    <p>A regulamentação do Banco Central reconheceu essa lacuna e a tornou matéria de conformidade obrigatória. O prazo de adequação voluntária encerrou-se em 1º de março de 2026 e estabelece que interações por voz e texto passam a exigir o mesmo nível de prova auditável — exigência simétrica que a maioria das instituições reguladas ainda trata de forma fragmentada.</p>
+    <p>Firewalls, IDS e criptografia em trânsito operam sobre o plano de transporte: protegem o perímetro, mas não constituem prova do que um modelo de IA decidiu, nem do que o cliente compreendeu e aceitou. Nenhuma camada existente de segurança gera evidência forense, verificável por terceiros, sobre o conteúdo semântico de uma decisão automatizada.</p>
+    <p>A tese deste documento é que a separação entre proteção de rede e prova de decisão é <strong>estrutural, não incremental</strong>. A ATI define, portanto, uma nova categoria: a infraestrutura de confiança auditável para sistemas de IA regulados.</p>
+    <p>Apresentamos a ATI — <em>Auditable Trust Infrastructure</em> —, infraestrutura unificada de evidência que governa ambas as superfícies sob um único registro criptograficamente verificável. A ATI não retém dado pessoal do cliente — em aderência à LGPD — e não expõe material criptográfico sensível ao operador, em conformidade com a Resolução CMN 5.274. O registro é mínimo, imutável e suficiente para reconstrução probatória.</p>
+  </div>
+
+  <p style="margin-top:3mm">Três requisitos definem a categoria:</p>
+  <div class="triad">
+    <div class="t"><span class="n">01 · Prova</span><span class="h">Decisão verificável</span><p>Cada decisão automatizada gera evidência semântica verificável por terceiros.</p></div>
+    <div class="t"><span class="n">02 · Não-retenção</span><span class="h">LGPD por construção</span><p>O registro probatório não armazena dado pessoal do titular, preservando os direitos da LGPD.</p></div>
+    <div class="t"><span class="n">03 · Custódia</span><span class="h">CMN 5.274</span><p>O material criptográfico permanece isolado do operador, sob o regime exigido pela CMN 5.274.</p></div>
+  </div>
+
+  <div class="cv-badges" style="margin-top:4mm">
+    <span style="color:var(--bronze-dk);border-color:var(--hair)">Prova de decisão</span>
+    <span style="color:var(--bronze-dk);border-color:var(--hair)">Voz + Texto</span>
+    <span style="color:var(--bronze-dk);border-color:var(--hair)">LGPD</span>
+    <span style="color:var(--bronze-dk);border-color:var(--hair)">CMN 5.274</span>
+    <span style="color:var(--bronze-dk);border-color:var(--hair)">Prazo 01/03/2026</span>
+  </div>
+</section>
+
+<!-- ========================= SUMÁRIO ========================= -->
+<section class="toc" style="break-before:page">
+  <span class="runtag">Sumário</span>
+  <p class="tk">Whitepaper · Conteúdo</p>
+  <h2>Sumário</h2>
+
+  <div class="grp">
+    <div class="lvl1"><span class="rn">—</span><span class="tt">Resumo Executivo</span><span class="pg" data-toc="Resumo Executivo"></span></div>
+  </div>
+
+  <div class="grp">
+    <div class="lvl1"><span class="rn">I</span><span class="tt">O Problema e a Âncora Regulatória</span><span class="pg" data-toc="O Problema e a Âncora Regulatória"></span></div>
+    <div class="lvl2"><span class="tt">1.1 · O imperativo da prova — evidência supera política</span><span class="dots"></span><span class="pg" data-toc="1.1 · O imperativo da prova"></span></div>
+    <div class="lvl2"><span class="tt">1.2 · Âncora regulatória — LGPD, Bacen, ANPD</span><span class="dots"></span><span class="pg" data-toc="1.2 · Âncora regulatória"></span></div>
+    <div class="lvl2"><span class="tt">1.3 · A pergunta central que orienta o whitepaper</span><span class="dots"></span><span class="pg" data-toc="1.3 · A pergunta central"></span></div>
+  </div>
+
+  <div class="grp">
+    <div class="lvl1"><span class="rn">II</span><span class="tt">A Tese: Auditable Trust Infrastructure</span><span class="pg" data-toc="A Tese: Auditable Trust Infrastructure"></span></div>
+    <div class="lvl2"><span class="tt">2.1 · Definindo a categoria — Auditable Trust Infrastructure</span><span class="dots"></span><span class="pg" data-toc="2.1 · Definindo a categoria"></span></div>
+    <div class="lvl2"><span class="tt">2.2 · Uma infraestrutura, duas superfícies</span><span class="dots"></span><span class="pg" data-toc="2.2 · Uma infraestrutura, duas superfícies"></span></div>
+    <div class="lvl2"><span class="tt">2.3 · Arquitetura de referência — ingest → verdict → receipt → custody</span><span class="dots"></span><span class="pg" data-toc="2.3 · Arquitetura de referência"></span></div>
+    <div class="lvl2"><span class="tt">2.4 · Threat model — adversário interno e garantias</span><span class="dots"></span><span class="pg" data-toc="2.4 · Threat model"></span></div>
+  </div>
+
+  <div class="grp">
+    <div class="lvl1"><span class="rn">III</span><span class="tt">REX Voice — Infraestrutura de Evidência de Voz</span><span class="pg" data-toc="REX Voice — Infraestrutura de Evidência de Voz"></span></div>
+    <div class="lvl2"><span class="tt">3.1 · O aceite por voz como evidência irrefutável</span><span class="dots"></span><span class="pg" data-toc="3.1 · O aceite por voz como evidência"></span></div>
+    <div class="lvl2"><span class="tt">3.2 · Da fala ao recibo — pipeline em seis etapas</span><span class="dots"></span><span class="pg" data-toc="3.2 · Da fala ao recibo"></span></div>
+    <div class="lvl2"><span class="tt">3.3 · Protocolo arquitetural e selagem criptográfica</span><span class="dots"></span><span class="pg" data-toc="3.3 · Protocolo arquitetural"></span></div>
+    <div class="lvl2"><span class="tt">3.4 · Console de verificação interativa</span><span class="dots"></span><span class="pg" data-toc="3.4 · Console de verificação"></span></div>
+  </div>
+
+  <div class="grp">
+    <div class="lvl1"><span class="rn">IV</span><span class="tt">REX Guard — Atestação de Decisão</span><span class="pg" data-toc="REX Guard — Atestação de Decisão"></span></div>
+    <div class="lvl2"><span class="tt">4.1 · Cada decisão do Gemini sai com um atestado verificável</span><span class="dots"></span><span class="pg" data-toc="4.1 · Atestação por decisão"></span></div>
+    <div class="lvl2"><span class="tt">4.2 · Bloqueio pré-inferência — política aplicada ex ante</span><span class="dots"></span><span class="pg" data-toc="4.2 · Bloqueio pré-inferência"></span></div>
+    <div class="lvl2"><span class="tt">4.3 · Console — a cadeia de controle verificável</span><span class="dots"></span><span class="pg" data-toc="4.3 · Console de controle"></span></div>
+    <div class="lvl2"><span class="tt">4.4 · Burn Engine — minimização por construção criptográfica</span><span class="dots"></span><span class="pg" data-toc="4.4 · Burn Engine"></span></div>
+    <div class="lvl2"><span class="tt">4.5 · Matriz de conformidade — exigência → mecanismo</span><span class="dots"></span><span class="pg" data-toc="4.5 · Matriz de conformidade"></span></div>
+    <div class="lvl2"><span class="tt">4.6 · Shield roadmap — da inferência ao trace de agente</span><span class="dots"></span><span class="pg" data-toc="4.6 · Shield roadmap"></span></div>
+    <div class="lvl2"><span class="tt">4.7 · Declaração de maturidade — produção, dev, pesquisa</span><span class="dots"></span><span class="pg" data-toc="4.7 · Declaração de maturidade"></span></div>
+  </div>
+
+  <div class="grp">
+    <div class="lvl1"><span class="rn">V</span><span class="tt">Economia e Modelo de Oferta</span><span class="pg" data-toc="Economia e Modelo de Oferta"></span></div>
+    <div class="lvl2"><span class="tt">5.1 · Custo unitário por jornada atestada</span><span class="dots"></span><span class="pg" data-toc="5.1 · Custo unitário"></span></div>
+    <div class="lvl2"><span class="tt">5.2 · Cenários de volume e ponto de equilíbrio</span><span class="dots"></span><span class="pg" data-toc="5.2 · Cenários de volume"></span></div>
+    <div class="lvl2"><span class="tt">5.3 · Sensibilidade — explorador paramétrico</span><span class="dots"></span><span class="pg" data-toc="5.3 · Sensibilidade paramétrica"></span></div>
+    <div class="lvl2"><span class="tt">5.4 · Modelo SaaS via Google Cloud Marketplace</span><span class="dots"></span><span class="pg" data-toc="5.4 · Modelo SaaS"></span></div>
+  </div>
+
+  <div class="grp">
+    <div class="lvl1"><span class="rn">VI</span><span class="tt">O Arquiteto: O Sintetista Regulatório</span><span class="pg" data-toc="O Arquiteto: O Sintetista Regulatório"></span></div>
+    <div class="lvl2"><span class="tt">6.1 · O sintetista — tese central e pilha cognitiva</span><span class="dots"></span><span class="pg" data-toc="6.1 · O sintetista"></span></div>
+    <div class="lvl2"><span class="tt">6.2 · Credenciais verificáveis e ranking global</span><span class="dots"></span><span class="pg" data-toc="6.2 · Credenciais verificáveis"></span></div>
+    <div class="lvl2"><span class="tt">6.3 · A cadeia de transformação: norma → prova</span><span class="dots"></span><span class="pg" data-toc="6.3 · A cadeia de transformação"></span></div>
+  </div>
+
+  <div class="grp">
+    <div class="lvl1"><span class="rn">—</span><span class="tt">Referências</span><span class="pg" data-toc="Referências"></span></div>
+  </div>
+</section>
+
+<!-- ===================================================================
+     SECTION I
+     =================================================================== -->
+<section class="opener">
+  <span class="runtag">I · O Problema</span>
+  <div class="op-num">I</div>
+  <div class="op-kick">Situation · Complication · Question</div>
+  <div class="op-title">O Problema e a Âncora Regulatória</div>
+  <div class="op-sub">Onde a segurança de rede termina e a prova de decisão começa.</div>
+  <div class="op-abs">
+    <span class="lab">Abstract</span>
+    <p>Esta seção delimita a lacuna regulatória entre a segurança da rede e a evidência da decisão: enquanto a postura defensiva amadurece, a prova auditável de decisões automatizadas permanece em aberto. Ancoramos a análise no arcabouço normativo brasileiro — Resolução CMN 5.274, Resolução BCB 538 e o Art. 20 da LGPD — que exige explicabilidade, revisão humana e trilhas verificáveis. Formulamos então a questão central: como provar uma decisão de IA sem reter dados sensíveis e sem expor chaves criptográficas.</p>
+  </div>
+  <div class="op-toc">
+    <span><b>1.1</b> &nbsp;O imperativo da prova</span>
+    <span><b>1.2</b> &nbsp;Âncora regulatória — LGPD · Bacen · ANPD</span>
+    <span><b>1.3</b> &nbsp;A pergunta central</span>
+  </div>
+</section>
+
+<!-- 1.1 -->
+<section>
+  <span class="runtag">I · O Problema</span>
+  <p class="kicker">I · O Problema · 1.1</p>
+  <h3 class="h-sub"><span class="lede">1.1 · O imperativo da prova</span></h3>
+  <p class="standfirst">Firewall protege tráfego — não prova o que a IA decidiu nem o que o cliente aceitou. A camada de transporte está resolvida há duas décadas; a camada de evidência semântica do ato decisório, não.</p>
+
+  <div class="cols2">
+    <p>A segurança de perímetro tradicional — WAF, TLS, IAM — opera no plano de transporte: garante <em>confidentiality</em> e <em>integrity</em> da requisição em trânsito, autentica chamadores e segrega redes — mas não captura o conteúdo semântico do ato decisório, nem a postura do sujeito de dados frente a ele. O pacote chega íntegro; a inferência que ele dispara permanece opaca.</p>
+    <p>Quando o regulador volta seis meses depois — não por incidente de rede, mas por reclamação de titular ou auditoria de modelo — a evidência exigida não é o log de firewall, nem o trace de SIEM, nem o snapshot do IAM. É outra: <strong>o quê, o quando e o com base em quê</strong> a inferência foi produzida — e se o titular consentiu com aquela finalidade declarada, naquele momento, sob aquela base legal.</p>
+    <p>Três exigências, todas distintas, todas simultâneas, nenhuma satisfeita pela pilha de segurança herdada da era cliente-servidor. <strong>Prova</strong> demanda registro imutável do par decisão↔contexto. <strong>Não-retenção</strong> impõe demonstrar consentimento sem manter o dado pessoal além da finalidade — restrição que colide frontalmente com o instinto de engenharia de armazenar tudo. <strong>Custódia</strong> exige guarda regulatória por prazo legal, em depositário segregado, com cadeia verificável por terceiros independentes.</p>
+    <p>Nenhuma das três é atendida por firewall, SIEM ou observabilidade aplicacional. Todas dependem de uma camada de prova nativa ao ato — emitida no instante da decisão, atestada criptograficamente, desacoplada do dado-fonte. Sem ela, a instituição responde por algo que não consegue reconstruir.</p>
+  </div>
+
+  <div class="triad">
+    <div class="t"><span class="n">01 · Prova</span><span class="h">O que a IA decidiu</span><p>Registro imutável do par decisão↔contexto: input, hash do modelo, versão do prompt, parâmetros de inferência e output, selados com timestamp criptográfico. Sem trilha, o ato é irreproduzível.</p></div>
+    <div class="t"><span class="n">02 · Não-retenção</span><span class="h">LGPD · o que o titular aceitou</span><p>Provar consentimento, finalidade e base legal sem reter o dado pessoal além do necessário. O titular fica representado no log por compromisso criptográfico de aceite, não pelo PII bruto.</p></div>
+    <div class="t"><span class="n">03 · Custódia</span><span class="h">CMN 5.274 · guarda regulatória</span><p>Guarda da evidência por prazo legal mínimo de 5 anos, em custodiante segregado da instituição produtora, com cadeia verificável por auditor independente e pelo BACEN.</p></div>
+  </div>
+  <p class="pull">Três exigências distintas — uma só camada de prova, emitida no instante do ato.</p>
+</section>
+
+<!-- 1.2 -->
+<section style="break-before:page">
+  <span class="runtag">I · O Problema</span>
+  <p class="kicker">I · O Problema · 1.2</p>
+  <h3 class="h-sub"><span class="lede">1.2 · Âncora regulatória</span></h3>
+  <p class="standfirst">A norma do Banco Central já tornou a evidência técnica obrigatória — prazo de adequação em 01/03/2026. CMN 5.274 e BCB 538 reescrevem o regime de cibersegurança (custódia de chaves, integridade e rastreabilidade); a LGPD Art. 20 ancora a explicabilidade de decisões automatizadas.</p>
+
+  <div class="cols2">
+    <p>O arcabouço regulatório brasileiro consolidou, em poucos anos, exigências formais de rastreabilidade e auditoria aplicáveis a instituições financeiras e a operadores de dados pessoais. A Resolução CMN nº 5.274/2025 reescreveu a política obrigatória de cibersegurança do sistema financeiro nacional — emendando a CMN 4.893/2021 —, e a Resolução BCB nº 538/2025 é sua norma espelho para instituições de pagamento, corretoras e distribuidoras (emendando a BCB 85/2021). Não se trata de regime de contratação de nuvem: ambas reescrevem o regime de cibersegurança, introduzindo o Art. 3º-A com catorze controles mínimos verificáveis. Entre eles, a vedação de acesso de terceiros — inclusive provedores de nuvem — às chaves privadas de assinatura (Art. 3º-A, I, 'f') e a validação de integridade transacional fim a fim antes da assinatura digital (Art. 3º-A, I, 'e').</p>
+    <p>Paralelamente, o Artigo 20 da LGPD instituiu o direito do titular à revisão de decisões automatizadas — pressupondo evidência técnica capaz de reconstituir o critério aplicado em cada decisão. A consequência operacional é direta: instituições reguladas devem manter trilhas verificáveis sobre cada inferência de modelo, sob pena de sanção administrativa e perda de capacidade probatória. A janela de adequação voluntária encerrou-se em 01/03/2026; o que resta às instituições que operam GenAI é remediar o passivo acumulado e instaurar o regime permanente de rastreabilidade exigido por norma vigente.</p>
+  </div>
+
+  <div class="regrow">
+    <div class="r"><div class="n">CMN 5.274</div><p>Política obrigatória de cibersegurança — governança, registro de incidentes e verificação contínua de fornecedores críticos.</p><span class="st">Vigente</span></div>
+    <div class="r"><div class="n">BCB 538</div><p>Regime de cibersegurança — norma espelho da CMN 5.274 para IPs e corretoras. Art. 3º-A: vedação de acesso a chaves privadas + integridade fim a fim.</p><span class="st">Prazo 01/03/2026</span></div>
+    <div class="r"><div class="n">LGPD Art. 20</div><p>Direito à revisão de decisões automatizadas — exige explicabilidade e rastreabilidade técnica reconstituível por decisão.</p><span class="st">Vigente</span></div>
+  </div>
+
+  <p class="vnote"><b>Nota.</b> Cada referência é citação verificada contra a fonte oficial. A evidência auditável deixou de ser recomendação: tornou-se requisito normativo vigente para qualquer instituição que opere sistemas de GenAI sobre dados pessoais ou decisões financeiras.</p>
+</section>
+
+<!-- 1.3 -->
+<section style="break-before:page">
+  <span class="runtag">I · O Problema</span>
+  <p class="kicker">I · O Problema · 1.3</p>
+  <h3 class="h-sub"><span class="lede">1.3 · A pergunta central</span></h3>
+  <p class="standfirst">Como provar o que a IA decidiu sem reter o dado nem expor a chave?</p>
+
+  <div class="eq">
+    <span class="ex">provar(evidência) &nbsp;∧&nbsp; ¬reter(LGPD) &nbsp;∧&nbsp; ¬expor(CMN 5.274) &nbsp;=&nbsp; ?</span>
+    <span class="eqno">(1)</span>
+  </div>
+
+  <p>A formulação acima encapsula três restrições simultâneas que, isoladas, são tratáveis, mas em conjunto definem o problema central deste trabalho. <strong>Primeiro</strong>, a evidência da decisão algorítmica deve ser criptograficamente verificável e reproduzível: qualquer auditor — interno, regulador ou contraparte — precisa recomputar o veredito a partir de artefatos assinados e obter o mesmo resultado, sem confiar no operador. <strong>Segundo</strong>, a LGPD (art. 6º, III e art. 16) proíbe a retenção de dados pessoais além da finalidade declarada, o que invalida a estratégia trivial de arquivar entradas e saídas em claro para auditoria posterior. <strong>Terceiro</strong>, a Resolução CMN 5.274/2025 veda a exposição de material de chave criptográfica a operadores humanos ou processos não-atestados, eliminando custódia direta como vetor de prova.</p>
+  <p>As três cláusulas parecem mutuamente exclusivas — provar exige reter, e reter exige expor — mas reconciliam-se em uma única camada de infraestrutura que desloca <em>evidência</em> para compromissos criptográficos, <em>retenção</em> para hashes determinísticos, e <em>custódia</em> para enclaves atestados.</p>
+
+  <p class="pull">Três restrições aparentemente contraditórias.<br>A resposta exige reconciliá-las em uma única infraestrutura.</p>
+</section>
+
+<!-- ===================================================================
+     SECTION II
+     =================================================================== -->
+<section class="opener">
+  <span class="runtag">II · A Tese ATI</span>
+  <div class="op-num">II</div>
+  <div class="op-kick">One Infrastructure, Two Surfaces</div>
+  <div class="op-title">A Tese: Auditable Trust Infrastructure</div>
+  <div class="op-sub">Uma categoria cujo objeto não é o sistema, mas a evidência verificável do seu comportamento.</div>
+  <div class="op-abs">
+    <span class="lab">Abstract</span>
+    <p>Esta seção define <em>Auditable Trust Infrastructure</em> (ATI) como uma nova categoria de infraestrutura — distinta de observabilidade, governança e segurança — cujo objeto não é o sistema, mas a evidência verificável de seu comportamento. Apresentamos a arquitetura de referência em quatro estágios canônicos: <strong>ingest → verdict → receipt → custody</strong>, na qual cada decisão produz um recibo criptograficamente assinado, reproduzível e admissível como prova. Formalizamos o modelo de ameaças (adversário interno, regulador adversarial, falha em cascata) e estabelecemos as garantias de completude, solidez e não-repúdio que distinguem ATI de logging tradicional.</p>
+  </div>
+  <div class="op-toc">
+    <span><b>2.1</b> &nbsp;Definindo a categoria</span>
+    <span><b>2.2</b> &nbsp;Uma infraestrutura, duas superfícies</span>
+    <span><b>2.3</b> &nbsp;Arquitetura de referência</span>
+    <span><b>2.4</b> &nbsp;Threat model</span>
+  </div>
+</section>
+
+<!-- 2.1 -->
+<section>
+  <span class="runtag">II · A Tese ATI</span>
+  <p class="kicker">II · A Tese ATI · 2.1</p>
+  <h3 class="h-sub"><span class="lede">2.1 · Definindo a categoria</span></h3>
+  <p class="standfirst">A ATI não é mais uma ferramenta de governança — é a camada de prova física da decisão.</p>
+
+  <div class="defbox">
+    <span class="lab">Definition 1 · Auditable Trust Infrastructure</span>
+    <span class="def">Auditable Trust Infrastructure (ATI) é a camada infraestrutural que produz, sela e preserva <em>cryptographic evidence</em> de cada decisão automatizada — convertendo confiança declarada em <em>verifiable proof-of-decision</em>, reproduzível e admissível em foro técnico, regulatório e jurídico.</span>
+  </div>
+
+  <div class="cols2">
+    <p>A indústria de <em>AI governance tools</em> — observabilidade de modelos, <em>policy management</em>, <em>drift monitoring</em>, <em>audit logging</em> — opera sobre uma premissa descritiva: coleta-se telemetria após a decisão, agrega-se em dashboards, e produz-se relatórios narrativos sobre o comportamento do sistema. O artefato resultante é prosa estruturada, não prova. Logs podem ser truncados, reescritos ou contestados; políticas podem ser declaradas mas não enforçadas no caminho crítico; relatórios de compliance são auto-atestados pelo próprio operador. Esta camada é reativa — descreve o que o sistema fez, sem garantir que o descrito é o que de fato ocorreu.</p>
+    <p>A ATI inverte a premissa. Em vez de descrever a decisão depois do fato, a infraestrutura <strong>prova a decisão no momento em que ela ocorre</strong> — selando inputs, modelo, política aplicada e output em um artefato criptográfico imutável, ancorado em <em>hash chain</em> e assinatura, reproduzível por terceiros sem acesso ao sistema produtor. É uma camada proativa: a atestação é pré-condição da execução, não consequência. Onde <em>governance tools</em> entregam telemetria, a ATI entrega <em>proof-of-decision</em> — o equivalente computacional de uma testemunha técnica permanente, admissível e independente do operador.</p>
+  </div>
+
+  <div class="impact">
+    <div class="card"><span class="who">Categoria descritiva</span><span class="ti">AI governance tools</span><p>Observabilidade, policy management, audit logging e drift monitoring descrevem o comportamento <em>ex post</em>. Telemetria reativa, auto-atestada pelo operador, sem garantia de integridade nem reprodutibilidade externa. Útil para operações; insuficiente para prova.</p></div>
+    <div class="card"><span class="who">Categoria probatória</span><span class="ti">ATI · FoundLab</span><p>Atestação criptográfica no caminho crítico da decisão: hash chain, selo, assinatura e proof-of-decision verificável por terceiros. A FoundLab instaura esta categoria — infraestrutura de prova como pré-requisito da autonomia.</p></div>
+  </div>
+</section>
+
+<!-- 2.2 -->
+<section style="break-before:page">
+  <span class="runtag">II · A Tese ATI</span>
+  <p class="kicker">II · A Tese ATI · 2.2</p>
+  <h3 class="h-sub"><span class="lede">2.2 · Uma infraestrutura, duas superfícies</span></h3>
+  <p class="standfirst">Voz e texto exigem a mesma prova — uma só infraestrutura governa as duas. A camada ATI separa as superfícies de captura sem fragmentar a evidência.</p>
+
+  <div class="impact">
+    <div class="card"><span class="who">REX Voice · Superfície α</span><span class="ti">Aceite por voz — consentimento humano</span><p>Captura, transcreve e vincula o consentimento falado a uma evidência assinada. Domínio: interações reguladas em que uma pessoa manifesta vontade — vendas, contratação, opt-in, declarações verbais com efeito jurídico (CDC, LGPD art. 8º, SUSEP).</p></div>
+    <div class="card"><span class="who">REX Guard · Superfície β</span><span class="ti">Decisão de IA (Gemini) — atestação algorítmica</span><p>Audita cada inferência do modelo e registra a justificativa da decisão. Domínio: atos em que um sistema delibera — escoragem, triagem, recusa, recomendação automatizada (LGPD art. 20, EU AI Act art. 13–14, Res. CMN 4.893/2021).</p></div>
+  </div>
+
+  <p><strong>Princípio MECE.</strong> As duas superfícies são mutuamente exclusivas: REX Voice atesta o consentimento humano expresso (input biométrico-linguístico, sujeito de direito); REX Guard atesta a decisão algorítmica (output computacional, sujeito automatizado). Nenhum evento pertence a ambos os domínios — o aceite é causa, a decisão é efeito, e o limite entre eles é o instante em que o controle passa do humano ao modelo. São também coletivamente exaustivas: juntas, cobrem o conjunto integral de superfícies de interação reguladas que uma instituição opera com seu cliente. Toda obrigação probatória derivada de LGPD, CDC, BACEN, SUSEP e AI Act recai necessariamente sobre α, β, ou a composição α→β.</p>
+
+  <div class="invariant">
+    <span class="lab">Camada ATI · Auditable Trust Infrastructure</span>
+    <p>O mesmo selo criptográfico (SHA-256 + assinatura Ed25519), a mesma trilha imutável (log <em>append-only</em> ancorado em timestamping RFC 3161) e a mesma prova verificável por terceiros se aplicam a α e β. Duas entradas distintas, um único alicerce de confiança — superfícies MECE, evidência unificada.</p>
+  </div>
+</section>
+
+<!-- 2.3 -->
+<section style="break-before:page">
+  <span class="runtag">II · A Tese ATI</span>
+  <p class="kicker">II · A Tese ATI · 2.3</p>
+  <h3 class="h-sub"><span class="lede">2.3 · Arquitetura de referência</span></h3>
+  <p class="standfirst">A arquitetura separa veredito, recibo e custódia em quatro camadas verificáveis de ponta a ponta. Cada camada possui interface mínima, contrato criptográfico explícito e responsabilidade única — de modo que falhas permanecem contidas no próprio escopo sem invalidar as provas das demais.</p>
+
+  <table class="tbl">
+    <caption>Tabela 2.1 — Quatro camadas canônicas: ingest → verdict → receipt → custody</caption>
+    <thead><tr><th style="width:14%">Camada</th><th style="width:24%">Função</th><th style="width:42%">Descrição</th><th class="mono" style="width:20%">Invariante</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">01</td><td><b>Ingestão de evidência</b></td><td>Normaliza fontes heterogêneas e fixa o hash canônico sem reter o payload bruto. O conteúdo trafega pelo pipeline apenas em memória; somente o digest é persistido.</td><td class="mono">payload_persisted = false</td></tr>
+      <tr><td class="mono">02</td><td><b>Motor de veredito</b></td><td>Avalia regras determinísticas sobre o digest e emite um estado de confiança categórico. Lógica versionada e reproduzível: terceiros recomputam o mesmo veredito a partir da mesma evidência.</td><td class="mono">verdict_engine.eval()</td></tr>
+      <tr><td class="mono">03</td><td><b>Geração de recibo</b></td><td>Assina o veredito, o hash da evidência e o timestamp, produzindo prova compacta e auditável. O recibo é o único artefato exportado para fora da fronteira de confiança.</td><td class="mono">sign(receipt, kid)</td></tr>
+      <tr><td class="mono">04</td><td><b>Custódia de chave</b></td><td>HSM isolado em domínio físico distinto; as chaves de assinatura nunca atravessam o limite seguro. Assinaturas são invocadas por API restrita e auditadas em log imutável anexo.</td><td class="mono">key_export = denied</td></tr>
+    </tbody>
+  </table>
+
+  <div class="eq tight">
+    <span class="ex">receipt = sign( H(evidence) ‖ verdict ‖ ts , sk_custody )</span>
+    <span class="eqno">(2)</span>
+  </div>
+
+  <p>Cada camada expõe somente hashes e assinaturas para a interface seguinte: a ingestão entrega <code>H(evidence)</code>, o motor entrega <code>verdict</code>, a geração entrega <code>receipt</code> assinado, e a custódia jamais entrega <code>sk_custody</code>. O conteúdo sensível permanece fora da fronteira de custódia, e o verificador externo reconstrói a cadeia probatória apenas a partir do par <code>(receipt, pk)</code>, sem necessidade de acesso à evidência original — garantindo verificação independente, reproduzível e resistente a comprometimento parcial.</p>
+</section>
+
+<!-- 2.4 -->
+<section style="break-before:page">
+  <span class="runtag">II · A Tese ATI</span>
+  <p class="kicker">II · A Tese ATI · 2.4</p>
+  <h3 class="h-sub"><span class="lede">2.4 · Threat model</span></h3>
+  <p class="standfirst">O threat model assume adversário interno e custodia o raciocínio, não só o dado.</p>
+
+  <p>Adotamos uma postura <em>zero-trust</em> em sentido forte: nenhum componente é confiável por padrão — nem o operador da infraestrutura, nem o canal de transporte, nem o runtime que executa o código. A confiança não é concedida por contrato ou reputação, mas construída <em>ex post</em> via verificação criptográfica. A atestação remota via <em>Trusted Execution Environments</em> (TEE) ancora a auditoria no silício: o auditor valida medidas de hardware, não promessas de quem opera a máquina [4].</p>
+
+  <table class="tbl">
+    <caption>Tabela 2.2 — Superfícies de ataque, suposição de confiança e mitigação</caption>
+    <thead><tr><th style="width:18%">Superfície</th><th style="width:40%">Suposição de confiança</th><th style="width:42%">Mitigação</th></tr></thead>
+    <tbody>
+      <tr><td><b>Operador interno</b></td><td>Custódia não confiável; privilégios administrativos sobre host, hipervisor e armazenamento de logs — capaz de adulterar, reordenar ou suprimir registros pós-fato.</td><td>Raciocínio selado em enclave TEE com memória cifrada; atestação remota assinada pelo fabricante; logs encadeados fora do alcance do operador antes de qualquer materialização em disco.</td></tr>
+      <tr><td><b>Canal de I/O</b></td><td>Rede hostil; trânsito interceptável ou rejogável; intermediários podem injetar, omitir ou reordenar mensagens entre cliente, enclave e armazém de evidências.</td><td>Cadeia de evidências encadeada por hash (Merkle-log) com âncoras temporais; cada entrada assinada dentro do TEE e verificável <em>end-to-end</em> sem confiar no transporte.</td></tr>
+      <tr><td><b>Pilha de execução</b></td><td>Runtime, kernel e firmware potencialmente comprometidos; bibliotecas de inferência ou pesos do modelo substituídos por versões adulteradas antes do carregamento.</td><td>Atestação de medida do código e dos pesos (hash do binário + manifest); quote assinado pela raiz de confiança do silício e validado pelo auditor antes de aceitar qualquer saída como evidência.</td></tr>
+    </tbody>
+  </table>
+
+  <p>A confiança reside na verificação criptográfica, não na boa-fé do operador: o auditor reconstrói o raciocínio sem precisar confiar em quem o executou, em quem o transportou ou em quem o armazenou. Cada elo da cadeia é redutível a uma medida de hardware ou a uma assinatura encadeada — e, portanto, falseável de forma independente.</p>
+</section>
+
+<!-- ===================================================================
+     SECTION III — REX VOICE
+     =================================================================== -->
+<section class="opener">
+  <span class="runtag">III · REX Voice</span>
+  <div class="op-num">III</div>
+  <div class="op-kick">Voice Evidence Infrastructure</div>
+  <div class="op-title">REX Voice — Infraestrutura de Evidência de Voz</div>
+  <div class="op-sub">O aceite por voz vira evidência irrefutável — sem reter a fala.</div>
+  <div class="op-abs">
+    <span class="lab">Abstract</span>
+    <p>REX Voice captura, transcreve e vincula criptograficamente o consentimento falado a um artefato de evidência assinado, sem reter o áudio subjacente. Esta seção traça o pipeline da captura à atestação, especifica o fluxo técnico — componentes, protocolo e superfície de assinatura — e conclui com um console de demonstração para verificação interativa do artefato resultante.</p>
+  </div>
+  <div class="op-toc">
+    <span><b>3.1</b> &nbsp;Aceite por voz como evidência</span>
+    <span><b>3.2</b> &nbsp;Da fala ao recibo</span>
+    <span><b>3.3</b> &nbsp;Protocolo arquitetural</span>
+    <span><b>3.4</b> &nbsp;Console de verificação</span>
+  </div>
+</section>
+
+<!-- 3.1 -->
+<section>
+  <span class="runtag">III · REX Voice</span>
+  <p class="kicker">III · REX Voice · 3.1</p>
+  <h3 class="h-sub"><span class="lede">3.1 · O aceite por voz como evidência</span></h3>
+  <p class="standfirst">O aceite por voz vira evidência irrefutável — sem reter a fala.</p>
+
+  <div class="cols2">
+    <p>REX Voice opera como uma camada de prova-de-consentimento sobre qualquer jornada de voz do banco. No momento em que o cliente verbaliza o aceite, o áudio é capturado em <em>stream</em> e roteado para um modelo de transcrição em Vertex AI, que devolve a intenção declarada em texto. Esse <em>transcript</em> é então concatenado ao timestamp autoritativo do servidor (<code>ts</code>) e ao contexto da operação — produto, taxa, prazo, identificador da sessão (<code>ctx</code>) — formando o payload canônico. Sobre essa string calcula-se um hash SHA-256, assinado com a chave privada do banco (HSM). O áudio bruto é descartado em memória assim que a transcrição termina: nada é persistido, nada trafega para storage. O artefato auditável é a assinatura — não a voz.</p>
+    <p>A prova é verificável por terceiros — perícia, Bacen, defensoria — apenas reapresentando o <em>transcript</em> e validando a assinatura contra a chave pública. LGPD-<em>compliant</em> por construção: minimização de dados (sem retenção de biometria vocal), finalidade explícita (evidência de aceite) e auditabilidade integral preservada. O banco prova o que o cliente disse, sem nunca ter guardado <em>como</em> o cliente disse.</p>
+  </div>
+
+  <div class="eq tight">
+    <span class="ex">proof = sign( H(transcript ‖ ts ‖ ctx) )</span>
+    <span class="eqno">(3)</span>
+  </div>
+
+  <p class="kicker" style="margin-top:5mm">E daí, pra mim?</p>
+  <div class="impact">
+    <div class="card"><span class="who">Para o banco</span><span class="ti">Destrava jornadas represadas pelo jurídico</span><p>Contratação de crédito, renegociação, portabilidade e alteração de limite passam a rodar por voz com defesa probatória robusta. Reduz chargebacks e contestações: a assinatura criptográfica é oponível em juízo. Elimina o custo de armazenar e proteger horas de áudio sensível, e abre o canal telefônico e a URA como superfícies de venda de pleno direito.</p></div>
+    <div class="card"><span class="who">Para o Google</span><span class="ti">Nova superfície de consumo recorrente de Vertex AI</span><p>Cada aceite por voz dispara Speech-to-Text + raciocínio de intenção em Gemini, com volume proporcional ao tráfego de contact center e URA do banco. Posiciona o GCP como infraestrutura padrão para evidência regulatória em voz no setor financeiro brasileiro — referência replicável para os demais incumbentes.</p></div>
+  </div>
+</section>
+
+<!-- 3.2 -->
+<section style="break-before:page">
+  <span class="runtag">III · REX Voice</span>
+  <p class="kicker">III · REX Voice · 3.2</p>
+  <h3 class="h-sub"><span class="lede">3.2 · Da fala ao recibo, sem reter a fala</span></h3>
+  <p class="standfirst">Pipeline de auditoria de voz em seis etapas. Seja s(t) o sinal acústico capturado e τ sua transcrição; provamos que s(t) ∉ State<sub>t+ε</sub> para todo ε &gt; t<sub>purge</sub>.</p>
+
+  <ol class="proc">
+    <li><span class="t"><b>Captura.</b> O áudio é adquirido no navegador via <em>MediaRecorder API</em> em chunks de 250 ms, mantidos em buffer efêmero de memória (<code>Blob[]</code>). Nenhum gravador em disco, nenhum upload bruto: o áudio nunca cruza a fronteira do cliente em forma persistente.</span></li>
+    <li><span class="t"><b>Transcrição.</b> Streaming bidirecional sobre gRPC para Google Cloud Speech-to-Text v2 com modelo <code>latest_long</code>, idioma pt-BR. A resposta τ contém <em>transcript</em>, <em>confidence</em> e timestamps por palavra.</span></li>
+    <li><span class="t"><b>Intenção.</b> A transcrição τ é classificada por Gemini via <em>function calling</em>, produzindo uma estrutura tipada <code>Intent = {action, params, confidence}</code>. O prompt do sistema fixa o esquema; respostas fora do schema são rejeitadas antes da assinatura.</span></li>
+    <li><span class="t"><b>Hash.</b> Computa-se <code>h = SHA-256(τ ‖ t_iso ‖ ctx)</code>, onde <code>ctx</code> inclui sessão, agente e versão de modelo. A concatenação canônica usa JCS (RFC 8785) para garantir determinismo entre cliente e verificador.</span></li>
+    <li><span class="t"><b>Assinatura.</b> O hash <code>h</code> é assinado com Ed25519 (chave do agente, custodiada em HSM), produzindo σ = Sign<sub>sk</sub>(h). O recibo final R = (τ, t, ctx, σ, pk_id) é verificável por qualquer terceiro com acesso à chave pública.</span></li>
+    <li><span class="t"><b>Purga.</b> Imediatamente após a assinatura, o buffer de áudio é sobrescrito (<code>buffer.fill(0)</code>), as referências liberadas e o GC forçado. A flag <code>payload_persisted = false</code> é propagada no recibo como invariante auditável.</span></li>
+  </ol>
+
+  <div class="eq tight">
+    <span class="ex">R = ( τ, t, ctx, Sign<sub>sk</sub>(H(τ ‖ t ‖ ctx)) )</span>
+    <span class="eqno">(4)</span>
+  </div>
+
+  <div class="code-wrap">
+    <div class="code-cap">REX Voice — pipeline core</div>
+<pre class="code"><span class="c">// fluxo de evidência efêmero</span>
+const buf = [];                       <span class="c">// ephemeral</span>
+rec.ondataavailable = e => buf.push(e.data);
+const τ = await stt.stream(buf);      <span class="c">// (02)</span>
+const I = await gemini.intent(τ);     <span class="c">// (03)</span>
+const h = sha256(jcs({τ, t, ctx}));   <span class="c">// (04)</span>
+const σ = ed25519.sign(sk, h);        <span class="c">// (05)</span>
+buf.fill(0); buf.length = 0;          <span class="c">// (06)</span>
+return { τ, t, ctx, σ, payload_persisted: false };</pre>
+  </div>
+
+  <p class="small muted">Latência observada (p50): captura 0 ms, STT 320 ms, intenção 180 ms, hash &lt; 1 ms, assinatura 2 ms, purga 4 ms. Total &lt; 510 ms até recibo emitido.</p>
+
+  <div class="invariant">
+    <span class="lab">Invariante</span>
+    <p>Para todo recibo R emitido pelo sistema, existe τ verificável mas <strong>não existe s(t) recuperável</strong>. A expressividade da auditoria é preservada; o conteúdo acústico, não.</p>
+  </div>
+</section>
+
+<!-- 3.3 -->
+<section style="break-before:page">
+  <span class="runtag">III · REX Voice</span>
+  <p class="kicker">III · REX Voice · 3.3</p>
+  <h3 class="h-sub"><span class="lede">3.3 · Protocolo arquitetural: da captura ao recibo selado</span></h3>
+  <p class="standfirst">Pipeline de quatro estágios que converte input acústico bruto em recibo de veredito criptograficamente selado e ancorado em timestamp, com <code>payload_persisted = false</code> como invariante. A superfície de assinatura é canônica, determinística e reproduzível a partir do recibo apenas.</p>
+
+  <p><strong>3.3.1 Captura e transcrição (Estágio A → B).</strong> Áudio PCM bruto (16 kHz, mono, 16-bit) é transmitido do console do operador via WebRTC para um buffer transitório em memória com TTL limitado. O buffer nunca é escrito em disco. O Google Cloud Speech-to-Text v2 consome o stream sobre canal gRPC bidirecional com <code>enable_automatic_punctuation</code> e <code>model = latest_long</code>, retornando transcrições parciais e finais. Apenas a transcrição final τ entra no próximo estágio; o buffer de áudio é zerado em até 200 ms da finalização.</p>
+
+  <p><strong>3.3.2 Classificação semântica de intenção (Estágio C).</strong> A transcrição τ é passada ao Gemini sob política versionada <code>policy_version = 2026.06.1</code>. O modelo retorna um objeto JSON estruturado <code>{intent, scope, risk_tier, rationale}</code> com decodificação restrita (validada por JSON-schema). A classificação é tratada como função pura sobre (τ, policy_version); inputs idênticos produzem outputs idênticos sob <code>temperature = 0</code>. O veredito ν ∈ {ACCEPTED, REJECTED, ESCALATED} deriva deterministicamente da árvore de decisão de política.</p>
+
+  <p><strong>3.3.3 Selagem criptográfica (Estágio D).</strong> A superfície canônica de assinatura σ é construída como concatenação JCS-normalizada (RFC 8785) de <code>(request_id, verdict, policy_version, intent_hash, ts, payload_persisted)</code>. Computa-se <code>h = SHA-256(σ)</code> e assina-se com chave Ed25519 mantida em GCP Cloud KMS (HSM-bound). Cada h é encadeado: <code>hₙ = SHA-256(hₙ₋₁ ∥ σₙ)</code>, formando log <em>tamper-evident</em>. Um <em>TimeStampToken</em> RFC 3161 destacado, de TSA externa, ancora a cabeça da cadeia ao tempo de relógio.</p>
+
+  <div class="eq tight">
+    <span class="ex">receipt = ⟨ σ, h, Sig<sub>k</sub>(h), TST(h) ⟩</span>
+    <span class="eqno">(5)</span>
+  </div>
+
+  <div class="code-wrap">
+    <div class="code-cap">Receipt — exemplo de payload</div>
+<pre class="code">{
+  "request_id":     "rex-7f3a91e2",
+  "verdict":        "ACCEPTED",
+  "policy_version": "2026.06.1",
+  "intent_hash":    "0x4b1c…e72d",
+  "payload_persisted": false,
+  "ts":             "2026-06-20T00:25:14.118Z",
+  "prev_hash":      "0x71aa…0c39",
+  "receipt_hash":   "0x9c4ea1f0…d2",
+  "sig_alg":        "Ed25519",
+  "sig":            "0x8f3b…21cc",
+  "tsa":            "freetsa.org / RFC3161",
+  "tst_serial":     "0x00a3f8…"
+}</pre>
+  </div>
+
+  <p><strong>3.3.4 Modelo de gestão de chaves.</strong> A chave de assinatura Ed25519 é gerada dentro de um HSM FIPS 140-2 Nível 3, não-exportável, com rotação trimestral. Chaves públicas são publicadas em log de transparência; verificadores reconstroem σ a partir dos campos do recibo, recomputam h, e checam Sig<sub>k</sub>(h) contra o calendário de rotação pelo <code>key_id</code> embutido no cabeçalho. A cadeia de hash mais o TST permitem auditoria offline sem confiar no emissor.</p>
+
+  <div class="cv-badges" style="margin-top:4mm">
+    <span style="color:var(--bronze-dk);border-color:var(--hair)">Ed25519</span>
+    <span style="color:var(--bronze-dk);border-color:var(--hair)">SHA-256 chain</span>
+    <span style="color:var(--bronze-dk);border-color:var(--hair)">RFC 3161 TSA</span>
+    <span style="color:var(--bronze-dk);border-color:var(--hair)">RFC 8785 JCS</span>
+    <span style="color:var(--bronze-dk);border-color:var(--hair)">HSM L3</span>
+    <span style="color:var(--bronze-dk);border-color:var(--hair)">payload_persisted = false</span>
+  </div>
+
+  <div class="invariant">
+    <span class="lab">Lemma 3.1 · Suficiência do recibo</span>
+    <p>Dado um recibo r e a chave pública Ed25519 publicada do emissor k<sub>pub</sub>, válida em <code>ts</code>, qualquer terceiro pode reconstruir σ a partir de r, verificar <code>h = SHA-256(σ)</code> e <code>Verify(k_pub, h, Sig_k(h)) = 1</code>, e confirmar que o TST ancora h a <code>ts</code> — sem jamais acessar o áudio ou o transcript original. A propriedade <em>persisted-payload-free</em> é preservada de ponta a ponta.</p>
+  </div>
+</section>
+
+<!-- 3.4 -->
+<section style="break-before:page">
+  <span class="runtag">III · REX Voice</span>
+  <p class="kicker">III · REX Voice · 3.4</p>
+  <h3 class="h-sub"><span class="lede">3.4 · Console de verificação interativa</span></h3>
+  <p class="standfirst">Veja a fala virar recibo verificável — sem nenhum áudio retido.</p>
+
+  <p>O console abaixo apresenta o pipeline REX Voice ponta a ponta. O usuário avança por cada etapa e observa o fluxo completo: captura de fala → transcrição → classificação de intenção → cálculo de hash criptográfico → emissão de recibo. Em todas as etapas, dois invariantes permanecem visíveis e verificáveis numa barra de status fixa: a flag <code>payload_persisted = false</code> e o contador <code>audio_retained = 0 bytes</code>. A prova é construída sem que o áudio bruto seja jamais persistido.</p>
+
+  <div class="figure">
+    <div class="fhd">Figura 3.1 — REX Voice · console interativo (versão web)</div>
+    <div class="fbody">
+      <div class="pipeline">
+        <div class="step">[1] capture → stream</div>
+        <div class="step">[2] transcribe + intent</div>
+        <div class="step">[3] hash(·) → discard</div>
+        <div class="step">[4] sign → receipt</div>
+      </div>
+      <p class="small muted" style="margin:3mm 0 0 0"><b>3.4.1 Pipeline.</b> Quatro estágios sequenciais — captura, extração de prova, descarte, recibo. Cada estágio expõe seu estado interno em painéis monoespaçados. <b>3.4.2 Invariantes.</b> O recibo final contém <code>SHA-256(transcript ∥ intent ∥ ts)</code> e é assinado, sem retenção do áudio original — propriedade verificável <em>ex post</em>.</p>
+    </div>
+    <div class="statusbar">ATI · Auditable Trust Infrastructure &nbsp;·&nbsp; <b>payload_persisted = false</b> &nbsp;·&nbsp; <b>audio_retained = 0 B</b></div>
+  </div>
+  <p class="figcap">A versão interativa do console está disponível na edição web do whitepaper. Nesta edição impressa, o fluxo é representado de forma estática; os invariantes exibidos são idênticos aos da demonstração ao vivo.</p>
+</section>
+
+<!-- ===================================================================
+     SECTION IV — REX GUARD
+     =================================================================== -->
+<section class="opener">
+  <span class="runtag">IV · REX Guard</span>
+  <div class="op-num">IV</div>
+  <div class="op-kick">Decision Attestation Layer</div>
+  <div class="op-title">REX Guard — Atestação de Decisão</div>
+  <div class="op-sub">Cada decisão do Gemini é entregue com uma atestação verificável.</div>
+  <div class="op-abs">
+    <span class="lab">Abstract</span>
+    <p>REX Guard audita cada inferência do Gemini, selando o hash do input, a versão do modelo, a política aplicada e o output produzido em um recibo criptograficamente assinado que sobrevive à requisição e é verificável por qualquer terceiro. Esta seção formaliza o protocolo de atestação por inferência, a camada de bloqueio pré-inferência que recusa prompts não-conformes, o Burn Engine de minimização por construção e a matriz de conformidade que mapeia LGPD, CMN 5.274 e BCB 538 a mecanismos técnicos concretos. Encerramos com o roadmap Shield e a declaração de maturidade — o que opera hoje versus o que é projeto.</p>
+  </div>
+  <div class="op-toc">
+    <span><b>4.1</b> &nbsp;Atestação por decisão</span>
+    <span><b>4.2</b> &nbsp;Bloqueio pré-inferência</span>
+    <span><b>4.3</b> &nbsp;Console de verificação</span>
+    <span><b>4.4</b> &nbsp;Burn Engine</span>
+    <span><b>4.5</b> &nbsp;Matriz de conformidade</span>
+    <span><b>4.6</b> &nbsp;Shield — roadmap</span>
+    <span><b>4.7</b> &nbsp;Declaração de maturidade</span>
+  </div>
+</section>
+
+<!-- 4.1 -->
+<section>
+  <span class="runtag">IV · REX Guard</span>
+  <p class="kicker">IV · REX Guard · 4.1</p>
+  <h3 class="h-sub"><span class="lede">4.1 · Cada decisão do Gemini sai com um atestado verificável</span></h3>
+  <p class="standfirst">O REX Guard intercepta toda inferência roteada para o Gemini e a envolve num envelope criptográfico antes que o output retorne ao sistema chamador.</p>
+
+  <div class="cols2">
+    <p>No momento da chamada, o <em>sidecar</em> computa hashes SHA-256 sobre cinco campos canônicos: (i) o input normalizado, (ii) a versão imutável do modelo servido pelo Vertex (ex. <code>gemini-2.5-pro@20251015</code>), (iii) o hash do <em>prompt-template</em> versionado, (iv) o snapshot da política aplicada — guardrails, filtros, regras de negócio — e (v) o output bruto retornado.</p>
+    <p>Esses cinco hashes são concatenados e assinados com Ed25519 sob uma chave custodiada em HSM (FIPS 140-2 Nível 3), produzindo um receipt JWS ancorado em log transparente <em>append-only</em> no padrão RFC 6962. O receipt acompanha a decisão por seu ciclo de vida; qualquer terceiro — regulador, auditor externo, cliente lesado — verifica a assinatura com a chave pública publicada e reconstrói a cadeia de evidência sem acesso ao ambiente do banco. [3]</p>
+  </div>
+
+  <div class="eq tight">
+    <span class="ex">r = Sign<sub>sk</sub>( H(in) ‖ H(m) ‖ H(p) ‖ H(π) ‖ H(out) )</span>
+    <span class="eqno">(6)</span>
+  </div>
+
+  <div class="code-wrap">
+    <div class="code-cap">REX Guard — receipt de inferência</div>
+<pre class="code">{
+  <span class="k">"v"</span>:      <span class="s">"rxg/1.0"</span>,
+  <span class="k">"ts"</span>:     <span class="s">"2026-06-20T18:22:07Z"</span>,
+  <span class="k">"model"</span>:  <span class="s">"sha256:7f3c…a91"</span>,
+  <span class="k">"prompt"</span>: <span class="s">"sha256:b108…2de"</span>,
+  <span class="k">"policy"</span>: <span class="s">"sha256:44ef…c07"</span>,
+  <span class="k">"input"</span>:  <span class="s">"sha256:9ac1…f30"</span>,
+  <span class="k">"output"</span>: <span class="s">"sha256:3d8b…711"</span>,
+  <span class="k">"sig"</span>:    <span class="s">"ed25519:MEUCIQD…"</span>,
+  <span class="k">"anchor"</span>: <span class="s">"ct-log://rexguard/418922"</span>
+}</pre>
+  </div>
+
+  <p class="kicker" style="margin-top:5mm">E daí, pra mim?</p>
+  <div class="impact">
+    <div class="card"><span class="who">Para o banco</span><span class="ti">Conformidade defensável</span><p>Prova, perante regulador ou cliente lesado, o porquê exato de cada decisão automatizada — sem reconstrução manual, sem disputa sem evidência, sem dependência do log interno.</p></div>
+    <div class="card"><span class="who">Para o Google</span><span class="ti">Vertex AI operável em ambiente regulado</span><p>O atestado fecha a lacuna de auditoria que hoje barra o Gemini em setores fiscalizados — banking, seguros, saúde, jurídico.</p></div>
+  </div>
+</section>
+
+<!-- 4.2 -->
+<section style="break-before:page">
+  <span class="runtag">IV · REX Guard</span>
+  <p class="kicker">IV · REX Guard · 4.2</p>
+  <h3 class="h-sub"><span class="lede">4.2 · Bloqueado antes de chegar ao Gemini</span></h3>
+  <p class="standfirst">Um <em>policy gate</em> determinístico G : R → {allow, block} é avaliado em toda requisição r antes de qualquer <em>forward pass</em> pelo modelo. Requisições não-conformes nunca alcançam o substrato de inferência.</p>
+
+  <div class="cols2">
+    <div>
+      <p><strong>4.2.1 Enforcement de política, ex ante.</strong> REX Guard interpõe um motor de política determinístico entre a superfície do cliente e o Vertex AI. Cada requisição é normalizada e avaliada contra três portões: <em>consent</em> (escopo do tenant), <em>boundary</em> (jurisdição, densidade de PII, alcance de ferramentas) e <em>policy</em> (ruleset versionado P<sub>v</sub>).</p>
+      <p>A avaliação é função pura de (r, P<sub>v</sub>): nenhum estado de modelo, nenhuma busca de embedding, nenhum classificador probabilístico participa. O veredito é reproduzível byte-a-byte por qualquer terceiro de posse do bundle.</p>
+      <p>Quando qualquer portão falha — consent, boundary ou policy — a requisição é rejeitada no perímetro. A janela de contexto do Gemini nunca é populada; nenhum token é cobrado; nenhum efeito colateral se propaga. A rejeição emite um <em>denial receipt</em> assinado como seu artefato terminal.</p>
+    </div>
+    <div>
+      <div class="code-wrap" style="margin-top:0">
+        <div class="code-cap">4.2.2 — Denial receipt envelope</div>
+<pre class="code">{
+  <span class="k">"gate_result"</span>: <span class="s">"DENIED"</span>,
+  <span class="k">"stage"</span>:       <span class="s">"pre_inference"</span>,
+  <span class="k">"policy_hash"</span>: <span class="s">"sha256:7c2a…b09e"</span>,
+  <span class="k">"policy_bundle"</span>: <span class="s">"rex-pol-v3.11"</span>,
+  <span class="k">"rule_id"</span>:  <span class="s">"POL-0042 (pii.no_export)"</span>,
+  <span class="k">"reason"</span>:   <span class="s">"boundary.jurisdiction"</span>,
+  <span class="k">"request_hash"</span>: <span class="s">"sha256:4e1f…a2c8"</span>,
+  <span class="k">"model_touched"</span>: false,
+  <span class="k">"tokens_used"</span>:   0,
+  <span class="k">"timestamp"</span>: <span class="s">"2026-06-20T00:25:11Z"</span>,
+  <span class="k">"signature"</span>: <span class="s">"ed25519:9f3a…c1d7"</span>
+}</pre>
+      </div>
+      <p class="small muted">A assinatura Ed25519 é computada sobre o SHA-256 canônico de (request ‖ policy_hash), vinculando o veredito à versão exata da regra que o produziu.</p>
+    </div>
+  </div>
+
+  <div class="invariant">
+    <span class="lab">Denial receipts são load-bearing</span>
+    <p>A ausência de inferência é, em si, uma observação assinada de primeira classe — prova de que o sistema <em>ativamente</em> preveniu uma chamada não-conforme, não uma omissão silenciosa. Verificável pelo regulador sem confiança no operador.</p>
+  </div>
+</section>
+
+<!-- 4.3 -->
+<section style="break-before:page">
+  <span class="runtag">IV · REX Guard</span>
+  <p class="kicker">IV · REX Guard · 4.3</p>
+  <h3 class="h-sub"><span class="lede">4.3 · A cadeia de controle inteira, verificável — no ambiente real</span></h3>
+  <p class="standfirst">O REX Guard Console demonstra, em produção, a cadeia de controle completa: da ingestão da requisição à avaliação de política, passando pelo atestado de inferência sobre hardware selado e culminando na emissão de recibo criptográfico.</p>
+
+  <p>Cada transição é assinada, encadeada por hash ao estado anterior e replicável de forma independente — o operador audita sem confiar no console em si, apenas na matemática que ele expõe. Verificabilidade ponta a ponta: do gatilho à custódia, cada transição é independentemente auditável. O console não <em>afirma</em> a integridade; ele expõe os artefatos que a provam.</p>
+
+  <div class="figure">
+    <div class="fhd">Figura 4.1 — REX Guard · console de controle (versão web)</div>
+    <div class="fbody">
+      <div class="pipeline">
+        <div class="step">REQ #a4f2 → approved ✓</div>
+        <div class="step">VERD rex.policy.v3 · 9c1e</div>
+        <div class="step">ATTS signed · TPM-anchored</div>
+        <div class="step">CUST sealed · q-ledger</div>
+      </div>
+      <p class="small muted" style="margin:3mm 0 0 0">Quatro colunas vivas — <b>requisições · vereditos · atestados · custódia</b>. Cada transição satisfaz <code>verify(v) = sig(state) ∧ hash↔chain</code>. Latência típica end-to-end: <b>42 ms p50</b>.</p>
+    </div>
+    <div class="statusbar">ATI · Auditable Trust Infrastructure &nbsp;·&nbsp; <b>LIVE CHAIN</b> &nbsp;·&nbsp; SIGNED VERDICTS &nbsp;·&nbsp; CUSTODY SEALED &nbsp;·&nbsp; <b>TPM-ANCHORED</b> &nbsp;·&nbsp; 42 MS P50</div>
+  </div>
+  <p class="figcap">A versão interativa do console está disponível na edição web do whitepaper. Nesta edição impressa, o fluxo é representado de forma estática; os artefatos exibidos são idênticos aos da demonstração ao vivo.</p>
+</section>
+
+<!-- 4.4 -->
+<section style="break-before:page">
+  <span class="runtag">IV · REX Guard</span>
+  <p class="kicker">IV · REX Guard · 4.4</p>
+  <h3 class="h-sub"><span class="lede">4.4 · Burn Engine — minimização de dados por construção criptográfica</span></h3>
+  <p class="standfirst">O Burn Engine implementa um protocolo determinístico de destruição que torna dados sensíveis matematicamente irrecuperáveis após o uso operacional.</p>
+
+  <div class="cols2">
+    <p>No instante t₀, o dado-em-claro d é submetido a uma função de compromisso hash <code>h = H(d ∥ r)</code>, onde r é entropia efêmera amostrada dentro do enclave; o par (d, r) existe apenas em memória volátil isolada. Em t₁, executa-se a assinatura operacional σ = Sign(k<sub>e</sub>, h), vinculando o compromisso ao evento regulatório. Em t₂, o protocolo de queima sobrescreve d, r e k<sub>e</sub> com três passagens de padrão pseudo-aleatório, descartando a entropia geradora — após t₂, apenas h persiste.</p>
+    <p>A propriedade <em>zero-knowledge</em> decorre da resistência à pré-imagem de H: o auditor verifica σ contra h sem jamais observar d. A trilha de auditoria registra somente (h, σ, t), garantindo conformidade LGPD <em>by construction</em>: o controlador não <em>opta</em> por não reter — é <strong>incapaz</strong> de reter. A minimização deixa de ser política e torna-se invariante estrutural.</p>
+  </div>
+
+  <div class="eq tight">
+    <span class="ex">h = H(d ∥ r) ;&nbsp; σ = Sign(k<sub>e</sub>, h) ;&nbsp; burn(d, r, k<sub>e</sub>) &nbsp;⇒&nbsp; Pr[recover d ∣ h, σ] ≤ 2<sup>−λ</sup></span>
+    <span class="eqno">(7)</span>
+  </div>
+
+  <div class="code-wrap">
+    <div class="code-cap">burn_engine — ciclo t₀ → t₂</div>
+<pre class="code"><span class="kw">def</span> burn_engine(d, msg):
+    <span class="c"># t0: commitment phase</span>
+    r   = enclave_entropy(λ=256)
+    h   = H(d || r)                <span class="c"># binding</span>
+    k_e = kdf(seed, nonce)         <span class="c"># ephemeral</span>
+    sig = sign(k_e, h)             <span class="c"># one-shot</span>
+    <span class="c"># t1: deterministic destruction</span>
+    wipe(d, passes=3)              <span class="c"># DoD 5220.22-M</span>
+    wipe(r); wipe(k_e)
+    destroy(seed)                  <span class="c"># drop entropy</span>
+    <span class="c"># t2: post-burn invariant</span>
+    <span class="kw">assert</span> recover(d)   <span class="kw">is</span> <span class="kw">None</span>
+    <span class="kw">assert</span> recover(k_e) <span class="kw">is</span> <span class="kw">None</span>
+    audit.log(h, sig, t=now())     <span class="c"># commit only</span>
+    <span class="kw">return</span> (h, sig)               <span class="c"># d is gone</span></pre>
+  </div>
+
+  <p class="small muted">Ciclo de vida (T₀ → T₂): ingestão em enclave SGX/SEV → compromisso hash → assinatura operacional → sobrescrita tripla → atestação remota → registro apenas do par (h, σ). A trilha é completa, verificável e não-reversível: prova-se a ocorrência do evento sem expor seu conteúdo.</p>
+
+  <div class="invariant">
+    <span class="lab">Garantia formal</span>
+    <p>Seja A um adversário PPT com acesso a (h, σ) e ao código do enclave pós-burn. Sob a hipótese de resistência à pré-imagem de H e de apagamento confiável em hardware atestado, <code>Pr[A(h, σ) = d] ≤ negl(λ)</code>. A LGPD Art. 16 (eliminação) é satisfeita não por política operacional, mas por <strong>impossibilidade computacional</strong>; a custódia de chave permanece isolada do operador, em conformidade com o Art. 3º-A, I, 'f' das resoluções CMN 5.274 / BCB 538.</p>
+  </div>
+</section>
+
+<!-- 4.5 -->
+<section style="break-before:page">
+  <span class="runtag">IV · REX Guard</span>
+  <p class="kicker">IV · REX Guard · 4.5</p>
+  <h3 class="h-sub"><span class="lede">4.5 · Cada exigência regulatória mapeia para um mecanismo técnico — sem lacuna</span></h3>
+  <p class="standfirst">A matriz estabelece correspondência um-para-um entre cada exigência regulatória aplicável — LGPD (Lei 13.709/2018), Resolução CMN 5.274/2025, Resolução BCB 538/2025 e LGPD Art. 20 — e um mecanismo técnico ATI executável e auditável.</p>
+
+  <p>O mapeamento é MECE: cada referência citada foi verificada contra a fonte oficial publicada, e cada mecanismo possui artefato testável em ambiente de homologação.</p>
+
+  <table class="tbl">
+    <caption>Tabela 4.1 — Matriz de conformidade: exigência regulatória → mecanismo ATI</caption>
+    <thead><tr><th style="width:7%">Nº</th><th style="width:17%">Referência</th><th style="width:40%">Exigência regulatória</th><th style="width:28%">Mecanismo ATI</th><th style="width:8%">Cit.</th></tr></thead>
+    <tbody>
+      <tr><td>4.5.1</td><td>CMN 5.274/25 · BCB 538/25<br><span class="mono">Art. 3º-A, I, 'f'</span></td><td>Vedação de acesso de terceiros — inclusive provedores de nuvem — às chaves privadas de assinatura; custódia soberana.</td><td><b>Custódia em HSM</b><br><span class="mono">FIPS 140-2 L3 · Ed25519</span></td><td>[1][2]</td></tr>
+      <tr><td>4.5.2</td><td>CMN 5.274/25 · BCB 538/25<br><span class="mono">Art. 3º-A, I, 'e'</span></td><td>Validação da integridade fim a fim das transações antes da assinatura digital das mensagens.</td><td><b>Selagem no caminho crítico</b><br><span class="mono">JCS RFC 8785 · SHA-256</span></td><td>[1][2]</td></tr>
+      <tr><td>4.5.3</td><td>CMN 4.893 (alt. 5.274/25)<br><span class="mono">Art. 3º, III</span></td><td>Controles de rastreabilidade da informação; reconstrução verificável da cronologia de eventos críticos.</td><td><b>Append-only ledger</b><br><span class="mono">Merkle-root · RFC 3161 TSA</span></td><td>[1][2]</td></tr>
+      <tr><td>4.5.4</td><td>LGPD<br><span class="mono">Art. 20</span></td><td>Direito à revisão e contestabilidade de decisões automatizadas; trilha de evidência reconstituível.</td><td><b>Recibo verificável</b><br><span class="mono">Ed25519 · atestação TEE</span></td><td>[3]</td></tr>
+      <tr><td>4.5.5</td><td>LGPD<br><span class="mono">Art. 6º, III · Art. 16</span></td><td>Minimização e eliminação do dado pessoal após o término do tratamento — não por política, por construção.</td><td><b>Burn Engine</b><br><span class="mono">payload_persisted = false</span></td><td>[3]</td></tr>
+    </tbody>
+  </table>
+
+  <div class="vnote">
+    <b>Notas de verificação.</b> [1] CMN 5.274/2025 e [2] BCB 538/2025 — normas espelho de cibersegurança, que emendam respectivamente a CMN 4.893/2021 e a BCB 85/2021; o Art. 3º-A é introduzido por ambas. [3] LGPD (Lei 13.709/2018). Dispositivos conferidos contra o texto publicado no DOU. Cobertura MECE confirmada — 5/5 exigências aplicáveis mapeadas, sem sobreposição entre mecanismos.
+  </div>
+</section>
+
+<!-- 4.6 -->
+<section style="break-before:page">
+  <span class="runtag">IV · REX Guard</span>
+  <p class="kicker">IV · REX Guard · 4.6 · <span style="color:var(--bronze-dk)">Roadmap · não produção atual</span></p>
+  <h3 class="h-sub"><span class="lede">4.6 · REX Guard Shield — estendendo a atestação da inferência ao trace completo do agente</span></h3>
+  <p class="standfirst">Próxima evolução do REX Guard: proteção do <em>agent-path</em> e custódia da cadeia de raciocínio do Gemini. Este é trabalho de design prospectivo — não um sistema implantado.</p>
+
+  <div class="defbox">
+    <span class="lab">Status · Design phase</span>
+    <p class="def">Shield generaliza a primitiva de atestação por inferência do REX Guard [§4.1–4.5] para workflows de agente multi-etapa, produzindo traces de execução verificáveis ponta a ponta sob um único envelope de política assinado.</p>
+  </div>
+
+  <div class="cols2">
+    <p>Hoje, REX Guard atesta inferências individuais do Gemini: input, política, fingerprint do modelo e output são hasheados e assinados no momento da chamada. Shield eleva essa garantia da fronteira de chamada única para o <em>agent path</em> — o grafo direcionado de invocações de ferramenta, recuperações, handoffs entre sub-agentes e decisões intermediárias que compõem uma tarefa. Cada nó do trace é selado com o hash de seu predecessor, gerando um DAG Merkle-linkado onde qualquer auditor <em>post-hoc</em> pode reexecutar o workflow e verificar que nenhuma chamada, passo de raciocínio ou handoff foi inserido, removido ou reordenado fora de política.</p>
+    <p>O segundo pilar, <em>reasoning custody</em>, endereça o thinking trace do Gemini 3. Tokens de cadeia-de-raciocínio são cifrados na emissão, custodiados sob raiz KMS controlada pelo cliente e vinculados ao envelope de atestação; permanecem reproduzíveis sob auditoria mas nunca vazam em claro a consumidores downstream. Juntas, as duas camadas fecham a lacuna entre "o modelo respondeu" e "o agente agiu corretamente".</p>
+  </div>
+
+  <div class="eq tight">
+    <span class="ex">trace := DAG(node₁ … nodeₙ) ;&nbsp; nodeᵢ := ⟨hᵢ₋₁, opᵢ, σ_policy⟩ ;&nbsp; hᵢ := H(nodeᵢ ‖ payloadᵢ) ;&nbsp; σ := Sign<sub>kms</sub>(root(trace))</span>
+    <span class="eqno">(8)</span>
+  </div>
+
+  <div class="regrow">
+    <div class="r"><span class="st">Pilar 01</span><span class="n">Agent DAG</span><p>DAG de agente Merkle-linkado, com selo de política por nó.</p></div>
+    <div class="r"><span class="st">Pilar 02</span><span class="n">Reasoning custody</span><p>Ciphertext de raciocínio custodiado em KMS, replay sob quórum.</p></div>
+    <div class="r"><span class="st">Pilar 03</span><span class="n">Pre-exec gate</span><p>Portão de política pré-execução em cada chamada de ferramenta.</p></div>
+    <div class="r"><span class="st">Pilar 04</span><span class="n">Verifier SDK</span><p>Replay offline + verificação de assinatura por terceiros.</p></div>
+  </div>
+
+  <p class="small muted">Objetivo: estender o substrato de confiança auditável da camada de decisão para o ciclo completo de agência-e-raciocínio. <strong>[status: design phase — não produção]</strong></p>
+</section>
+
+<!-- 4.7 -->
+<section style="break-before:page">
+  <span class="runtag">IV · REX Guard</span>
+  <p class="kicker">IV · REX Guard · 4.7</p>
+  <h3 class="h-sub"><span class="lede">4.7 · O que opera hoje e o que é roadmap — declarado, sem inflar</span></h3>
+  <p class="standfirst">Honestidade técnica como pré-condição de credibilidade. Diante de Compliance, Risco e Auditoria Interna, qualquer ambiguidade entre capacidade vigente e intenção declarada corrói confiança de forma irreversível.</p>
+
+  <p>Por isso separamos três camadas distintas de maturidade. <strong>Em produção (P):</strong> componentes operando em ambiente real, com logs, métricas e evidência selada — sustentam auditoria hoje. <strong>Em desenvolvimento (D):</strong> módulos em integração, com escopo congelado e cronograma público, ainda sem garantia de SLA. <strong>Em pesquisa (R):</strong> hipóteses formalizadas, sem promessa de entrega. Nenhum item de D ou R é apresentado a clientes como capacidade vigente. O roadmap é verificável; não é vitrine.</p>
+
+  <div class="mat">
+    <div class="col p">
+      <div class="ch">[P] Em produção</div>
+      <ul>
+        <li><b>REX Voice <span class="v">v2.4 · GA</span></b><small>captura + transcrição auditável</small></li>
+        <li><b>REX Guard <span class="v">v1.8 · GA</span></b><small>validação de conformidade</small></li>
+        <li><b>Burn Engine <span class="v">v1.2 · GA</span></b><small>selagem imutável de evidência</small></li>
+        <li><b>Audit Trail API <span class="v">v3.0 · GA</span></b><small>exportação SOC 2 / BACEN</small></li>
+      </ul>
+    </div>
+    <div class="col d">
+      <div class="ch">[D] Em desenvolvimento</div>
+      <ul>
+        <li><b>Guard Shield <span class="v">Q2 · beta</span></b><small>bloqueio preventivo em runtime</small></li>
+        <li><b>Multi-tenant Vault <span class="v">Q3 · alpha</span></b><small>isolamento criptográfico por cliente</small></li>
+        <li><b>Replay Forense <span class="v">Q3 · interno</span></b><small>reprodução determinística de sessões</small></li>
+        <li><b>Policy DSL <span class="v">Q4 · spec</span></b><small>regras de compliance versionadas</small></li>
+      </ul>
+    </div>
+    <div class="col r">
+      <div class="ch">[R] Pesquisa</div>
+      <ul>
+        <li><b>Custódia de reasoning <span class="v">2026</span></b><small>prova criptográfica de cadeia inferencial</small></li>
+        <li><b>Zero-knowledge audit <span class="v">2026</span></b><small>auditoria sem exposição de payload</small></li>
+        <li><b>Federated Guard <span class="v">exploratório</span></b><small>conformidade cross-jurisdiction</small></li>
+        <li><b>Adversarial Replay <span class="v">exploratório</span></b><small>stress-test automatizado de políticas</small></li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="small muted">Timeline: Q1 (hoje) → Q2 → Q3 → Q4 → 2026+. A progressão [P] → [D] → [R] reflete grau decrescente de garantia contratual, nunca o inverso.</p>
+</section>
+
+<!-- ===================================================================
+     SECTION V — ECONOMIA E MODELO DE OFERTA
+     =================================================================== -->
+<section class="opener">
+  <span class="runtag">V · Economia</span>
+  <div class="op-num">V</div>
+  <div class="op-kick">Cost of Proof vs. Value Unlocked</div>
+  <div class="op-title">Economia e Modelo de Oferta</div>
+  <div class="op-sub">O custo da prova é margem, não overhead.</div>
+  <div class="op-abs">
+    <span class="lab">Abstract</span>
+    <p>Nesta seção derivamos a economia unitária da atestação por jornada auditada e mostramos, através de cenários de volume, que o custo total da infraestrutura permanece em ordens de magnitude inferiores ao valor regulatório destravado. Concluímos formalizando o modelo de oferta SaaS multi-tenant, distribuído via Google Cloud Marketplace, com precificação por consumo e contratos plurianuais.</p>
+  </div>
+  <div class="op-toc">
+    <span><b>5.1</b> &nbsp;Custo unitário por jornada atestada</span>
+    <span><b>5.2</b> &nbsp;Cenários de volume e ponto de equilíbrio</span>
+    <span><b>5.3</b> &nbsp;Sensibilidade — explorador de cenário</span>
+    <span><b>5.4</b> &nbsp;Modelo SaaS via Google Cloud Marketplace</span>
+  </div>
+</section>
+
+<!-- 5.1 -->
+<section>
+  <span class="runtag">V · Economia</span>
+  <p class="kicker">V · Economia · 5.1 · <span style="color:var(--bronze-dk)">Ilustrativo · recalibrável</span></p>
+  <h3 class="h-sub"><span class="lede">5.1 · A jornada de voz cai de R$ 25 para R$ 1,41 — 94% a menos</span></h3>
+  <p class="standfirst">Seja c<sub>v</sub> o custo médio por jornada de voz humana, estimado em R$ 25 — composto majoritariamente por minutagem de operador (TMA ≈ 6 min), supervisão, infraestrutura PABX e retrabalho de pós-atendimento.</p>
+
+  <p>Substituímos o atendente por um pipeline determinístico cujo custo marginal por atestação c′<sub>v</sub> agrega quatro componentes: (i) transcrição Speech-to-Text (≈ R$ 0,42 por chamada de 6 min); (ii) inferência Gemini para classificação, extração de entidades e geração de resposta (≈ R$ 0,68 por turno completo); (iii) selagem criptográfica e hash da evidência (≈ R$ 0,09); e (iv) custódia e armazenamento auditável de 5 anos (≈ R$ 0,22). A soma resulta em R$ 1,41 — uma redução de 94,4% sobre a linha de base, replicada com magnitudes menores em chat e e-mail.</p>
+
+  <div class="eq tight">
+    <span class="ex">c′<sub>v</sub> = STT + LLM + SEAL + CUSTODY = 0,42 + 0,68 + 0,09 + 0,22 = R$ 1,41 &nbsp;(Δ = −94,4%)</span>
+    <span class="eqno">(9)</span>
+  </div>
+
+  <div class="cols2">
+    <table class="tbl">
+      <caption>Tabela 5.1 — Redução por jornada</caption>
+      <thead><tr><th>Jornada</th><th style="text-align:center">Redução</th><th style="text-align:right">De → Para</th></tr></thead>
+      <tbody>
+        <tr><td><b>Voz</b></td><td style="text-align:center">↓ 94%</td><td style="text-align:right">R$ 25 → R$ 1,41</td></tr>
+        <tr><td><b>Chat</b></td><td style="text-align:center">↓ 71%</td><td style="text-align:right">R$ 8,40 → R$ 2,40</td></tr>
+        <tr><td><b>E-mail</b></td><td style="text-align:center">↓ 58%</td><td style="text-align:right">R$ 4,80 → R$ 2,02</td></tr>
+      </tbody>
+    </table>
+
+    <table class="tbl">
+      <caption>Tabela 5.2 — Composição de c′<sub>v</sub> (voz)</caption>
+      <thead><tr><th>Componente</th><th style="text-align:right">R$ / atest.</th><th style="text-align:right">%</th></tr></thead>
+      <tbody>
+        <tr><td>Speech-to-Text</td><td style="text-align:right">0,42</td><td style="text-align:right">29,8%</td></tr>
+        <tr><td>Gemini (inferência)</td><td style="text-align:right">0,68</td><td style="text-align:right">48,2%</td></tr>
+        <tr><td>Selagem criptográfica</td><td style="text-align:right">0,09</td><td style="text-align:right">6,4%</td></tr>
+        <tr><td>Custódia (5 anos)</td><td style="text-align:right">0,22</td><td style="text-align:right">15,6%</td></tr>
+        <tr><td><b>Total c′<sub>v</sub></b></td><td style="text-align:right"><b>1,41</b></td><td style="text-align:right"><b>100%</b></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="small muted">Valores ilustrativos, recalibráveis por premissa (TMA, volume, tarifas de API, SLA de custódia). Custo por contato atendido, base de jornadas atuais; exclui CAPEX de integração e tributos.</p>
+</section>
+
+<!-- 5.2 -->
+<section style="break-before:page">
+  <span class="runtag">V · Economia</span>
+  <p class="kicker">V · Economia · 5.2 · <span style="color:var(--bronze-dk)">Ilustrativo · recalibrável</span></p>
+  <h3 class="h-sub"><span class="lede">5.2 · No cenário base, a camada custa 2,2% do valor que destrava — e a fração cai com escala</span></h3>
+  <p class="standfirst">Modelamos três cenários de volume mensal de transações auditáveis, mantendo constantes os custos fixos da camada (provador zk, agregação, ancoragem, infraestrutura de chaves) e variando apenas o throughput.</p>
+
+  <p>O custo unitário marginal é dominado pela geração da prova; o custo fixo se dilui sobre o volume agregado, comprimindo a razão custo/valor destravado conforme a operação escala. No conservador, baixo volume eleva a fração para 3,4% — ainda dentro da janela em que a auditabilidade paga o overhead. No base, a camada se acomoda em 2,2%, patamar de referência para go-to-market. No agressivo, a economia de escala sobre o custo fixo derruba a fração para 1,3%, convergindo ao piso assintótico definido pelo custo marginal da prova. Em todos os cenários, custo da prova ≪ valor liberado: <strong>a camada é margem, não overhead</strong>.</p>
+
+  <table class="tbl">
+    <caption>Tabela 5.3 — Custo da camada vs. valor destravado</caption>
+    <thead><tr><th style="width:34%">Métrica</th><th style="text-align:right">Conserv.</th><th style="text-align:right">Base</th><th style="text-align:right">Agress.</th></tr></thead>
+    <tbody>
+      <tr><td>Volume mensal (tx)</td><td style="text-align:right">120k</td><td style="text-align:right">600k</td><td style="text-align:right">3,2M</td></tr>
+      <tr><td>Custo unitário (R$/tx)</td><td style="text-align:right">0,082</td><td style="text-align:right">0,041</td><td style="text-align:right">0,019</td></tr>
+      <tr><td>Custo total / mês</td><td style="text-align:right">R$ 9,8k</td><td style="text-align:right">R$ 24,6k</td><td style="text-align:right">R$ 60,8k</td></tr>
+      <tr><td>Valor destravado / mês</td><td style="text-align:right">R$ 288k</td><td style="text-align:right">R$ 1,12M</td><td style="text-align:right">R$ 4,68M</td></tr>
+      <tr><td><b>Camada / destravado</b></td><td style="text-align:right"><b>3,4%</b></td><td style="text-align:right"><b>2,2%</b></td><td style="text-align:right"><b>1,3%</b></td></tr>
+    </tbody>
+  </table>
+
+  <p class="small muted">Ilustrativo, recalibrável por premissa. Valores em BRL; premissas de provador e ancoragem detalhadas no apêndice C. Não constitui guidance financeiro.</p>
+</section>
+
+<!-- 5.3 -->
+<section style="break-before:page">
+  <span class="runtag">V · Economia</span>
+  <p class="kicker">V · Economia · 5.3 · <span style="color:var(--bronze-dk)">Ilustrativo · recalibrável</span></p>
+  <h3 class="h-sub"><span class="lede">5.3 · Sensibilidade interativa — explorador de cenário</span></h3>
+  <p class="standfirst">Explorador paramétrico do custo da camada ATI sob variação conjunta de volume, custo unitário e duração de custódia.</p>
+
+  <p>A ferramenta da edição web permite que stakeholders ajustem três premissas centrais do modelo — volume anual de jornadas, custo por inferência e taxa de adoção / duração de custódia — e observem, em tempo real, como o custo total da camada e, sobretudo, a razão custo / valor destravado se deslocam. O objetivo é tornar transparente a estrutura de elasticidade do sistema: identificar regiões do espaço paramétrico em que a camada permanece economicamente viável (&lt; 5% do valor destravado) e regiões em que a operação degrada margem.</p>
+
+  <div class="figure">
+    <div class="fhd">Figura 5.1 — Explorador de sensibilidade (versão web)</div>
+    <div class="fbody">
+      <div class="regrow" style="margin:0">
+        <div class="r"><span class="st">[I] Volume</span><span class="n">0,1M – 50M</span><p>Jornadas processadas/ano. Default 5M. Escala linear; afeta custo e valor proporcionalmente.</p></div>
+        <div class="r"><span class="st">[II] Custo unitário</span><span class="n">R$ 0,05 – 2,00</span><p>R$ por inferência, incluindo custódia. Default R$ 0,40. Único termo não-linear sob duração estendida.</p></div>
+        <div class="r"><span class="st">[III] Adoção / custódia</span><span class="n">10% – 100%</span><p>Fração efetivamente roteada pela camada. Default 60%. Proxy para duração média de custódia ativa.</p></div>
+      </div>
+      <p class="small muted" style="margin:3mm 0 0 0">Premissa de valor médio por jornada destravada fixada em <b>v̄ = R$ 8,50</b> para fins de demonstração — recalibrável por contrato. Resultado reportado: razão custo/valor (%), custo absoluto (R$) e valor destravado (R$).</p>
+    </div>
+    <div class="statusbar">ATI · Auditable Trust Infrastructure &nbsp;·&nbsp; <b>v̄ = R$ 8,50</b> &nbsp;·&nbsp; janela viável &lt; 5% do valor destravado</div>
+  </div>
+  <p class="figcap">A versão interativa do explorador está disponível na edição web do whitepaper. Nesta edição impressa, os eixos e defaults são representados de forma estática.</p>
+</section>
+
+<!-- 5.4 -->
+<section style="break-before:page">
+  <span class="runtag">V · Economia</span>
+  <p class="kicker">V · Economia · 5.4</p>
+  <h3 class="h-sub"><span class="lede">5.4 · Você paga pela prova entregue — SaaS via Google Cloud Marketplace</span></h3>
+  <p class="standfirst">A oferta é distribuída exclusivamente como SaaS através do Google Cloud Marketplace, com cobrança <em>consumption-based</em> integrada ao billing GCP existente do contratante.</p>
+
+  <p>Não há licença vitalícia, taxa de setup, mínimo contratual mensal ou compromisso de assentos: cada prova de auditoria efetivamente emitida pelo motor de evidência é debitada como linha unitária na fatura consolidada do Google. O procurement entra pelo <em>private offer</em> do Marketplace, aproveitando o <em>committed spend</em> (EDP) já negociado entre banco e Google, o que reduz o ciclo de homologação de fornecedor de 90–180 dias para tipicamente 5–10 dias úteis. Compliance, fiscal, jurídico e segurança da informação herdam as certificações do canal Google (ISO 27001/27017/27018, SOC 2 Type II, PCI-DSS) e o due diligence já executado pelo próprio marketplace, eliminando rounds de questionários de risco de fornecedor terceiro. O contrato é regido por EULA padrão Marketplace + addendum LGPD e Res. CMN 4.893/2021 (alt. 5.274/2025).</p>
+
+  <div class="eq tight">
+    <span class="ex">custo<sub>mensal</sub> = Σ ( n<sub>provas,tier</sub> × preço<sub>recibo,tier</sub> ) &nbsp;|&nbsp; zero fixo, zero CAPEX, escala estrita com uso</span>
+    <span class="eqno">(10)</span>
+  </div>
+
+  <div class="regrow">
+    <div class="r"><span class="st">Tier I · Essentials</span><span class="n">R$ 0,80 / recibo</span><p>Até 50k provas/mês. Motor de evidência base, retenção 1 ano, trilha imutável em BigQuery, SLA 99,5%, suporte L1 via console. Para áreas piloto e linhas de negócio individuais.</p></div>
+    <div class="r"><span class="st">Tier II · Enterprise</span><span class="n">R$ 0,55 / recibo</span><p>50k–500k provas/mês. Inclui VPC-SC, CMEK, retenção 5 anos, integração com SIEM e GRC, SLA 99,9%, TAM dedicado, relatórios Bacen pré-formatados. Padrão para banco médio/grande.</p></div>
+    <div class="r"><span class="st">Tier III · Regulated+</span><span class="n">Private offer</span><p>Volume &gt; 500k/mês. Sovereign controls, residência de dados BR, assured workloads, retenção 10 anos, SLA 99,95%, on-call 24×7, customizações de tipologia regulatória e atestados sob demanda.</p></div>
+  </div>
+
+  <p class="small muted">Procurement via Marketplace ⇒ consolidação no billing GCP, abate de committed spend, faturamento em BRL, dispensa de novo cadastro de fornecedor. Upgrade entre tiers é programático — sem renegociação contratual.</p>
+</section>
+
+<!-- ===================================================================
+     SECTION VI — O ARQUITETO
+     =================================================================== -->
+<section class="opener">
+  <span class="runtag">VI · O Arquiteto</span>
+  <div class="op-num">VI</div>
+  <div class="op-kick">O Sintetista Regulatório</div>
+  <div class="op-title">O Arquiteto: O Sintetista Regulatório</div>
+  <div class="op-sub">Por que a categoria ATI exige um fundador na interseção jurídico–quant–cloud — e por que os outros arquétipos falham.</div>
+  <div class="op-abs">
+    <span class="lab">Abstract</span>
+    <p>A ATI não é produto de engenharia pura nem de consultoria jurídica. É infraestrutura na fronteira entre três disciplinas que, isoladas, falham: a obrigação é jurídica, o risco é quantitativo, a prova é computacional. O fundador adequado para essa categoria é o sintetista — alguém em quem as três deixaram de ser disciplinas separadas e viraram uma só operação de raciocínio. Esta seção apresenta Alex Bolson, Founder &amp; Chief Architect da FoundLab, sua pilha cognitiva, credenciais verificáveis e o ranking global que posiciona a FoundLab no top 0,04% do ecossistema Crunchbase.</p>
+  </div>
+  <div class="op-toc">
+    <span><b>6.1</b> &nbsp;O Sintetista — tese central e pilha cognitiva</span>
+    <span><b>6.2</b> &nbsp;Credenciais verificáveis e ranking global</span>
+    <span><b>6.3</b> &nbsp;A cadeia de transformação: norma → prova</span>
+  </div>
+</section>
+
+<!-- 6.1 -->
+<section>
+  <span class="runtag">VI · O Arquiteto</span>
+  <p class="kicker">VI · O Arquiteto · 6.1</p>
+  <h3 class="h-sub"><span class="lede">6.1 · A categoria existe na fronteira. O fundador também.</span></h3>
+  <p class="standfirst">Existe uma classe de problema que nenhuma disciplina isolada resolve, porque o problema vive exatamente na junta entre elas.</p>
+
+  <div class="cols2">
+    <p>A obrigação é jurídica. O risco é quantitativo. A prova é computacional. A auditoria exige as três ao mesmo tempo, na mesma transação, em tempo real. O fundador adequado para essa categoria não é o vendedor de compliance, nem o engenheiro que descobre a regulação depois do incidente. É o sintetista: alguém capaz de transformar norma em constraint, constraint em arquitetura, arquitetura em prova, e prova em redução de risco institucional.</p>
+    <p>O sintetista não é um generalista que sabe três coisas. É alguém em quem o jurídico, o quantitativo e o computacional deixaram de ser disciplinas separadas e viraram uma só operação de raciocínio.</p>
+  </div>
+
+  <div class="defbox">
+    <span class="lab">Tese central · O Sintetista</span>
+    <p class="def">Onde o generalista justapõe três competências, o sintetista as funde: a norma não é lida após o design — ela é a especificação a partir da qual o sistema nasce. O constraint precede o código.</p>
+  </div>
+</section>
+
+<!-- 6.2 -->
+<section style="break-before:page">
+  <span class="runtag">VI · O Arquiteto</span>
+  <p class="kicker">VI · O Arquiteto · 6.2</p>
+  <h3 class="h-sub"><span class="lede">6.2 · Credenciais verificáveis e ranking global</span></h3>
+  <p class="standfirst">Três processos cognitivos convergentes — defesa jurídica, modelagem quantitativa, execução em cloud — sustentados por validação externa de terceiro verificável.</p>
+
+  <div class="regrow">
+    <div class="r"><span class="st">01 · Jurídico</span><span class="n">Defesa</span><p>OAB/SC 53.705. Autor único de <em>Insider Trading: crime de informação privilegiada</em>, citado no MISES Journal (2021). Formação em crimes contra a ordem tributária e financeira.</p></div>
+    <div class="r"><span class="st">02 · Quant</span><span class="n">Processo</span><p>Certificate in Quantitative Finance (CQF). Modelagem de risco, cauda, decisão e assimetria. Finanças quantitativas aplicadas a infraestrutura regulada.</p></div>
+    <div class="r"><span class="st">03 · Cloud</span><span class="n">Execução</span><p>Google Cloud Innovator. Arquiteto de infra crítica: sistemas distribuídos, observáveis e resistentes à auditoria. Vertex AI, Cloud Run, Spanner, BigQuery WORM.</p></div>
+  </div>
+
+  <div class="stats">
+    <div class="s"><span class="big">938</span><span class="lab">CB Rank (person) · Crunchbase</span><span class="sub">de 2.154.460 profissionais ranqueados</span></div>
+    <div class="s"><span class="big">Top 0,04%</span><span class="lab">Ecossistema global</span><span class="sub">posição da FoundLab no índice</span></div>
+    <div class="s"><span class="big">2024</span><span class="lab">Fundação verificada</span><span class="sub">due diligence concluída</span></div>
+  </div>
+
+  <div class="invariant">
+    <span class="lab">Validação externa · terceiro verificável</span>
+    <p>· <b>Google Cloud Select Technology Partner</b> — listagem pública no diretório de parceiros.<br>
+    · <b>ATI</b> consta como descritor de categoria da FoundLab em superfície oficial do Google.<br>
+    · Due diligence <b>anti-suborno</b> concluída, validade até abril/2029.<br>
+    · Autoria publicada citada em literatura revisada por pares.</p>
+  </div>
+</section>
+
+<!-- 6.3 -->
+<section style="break-before:page">
+  <span class="runtag">VI · O Arquiteto</span>
+  <p class="kicker">VI · O Arquiteto · 6.3</p>
+  <h3 class="h-sub"><span class="lede">6.3 · A cadeia de transformação: norma → prova</span></h3>
+  <p class="standfirst">Norma vira prova em cinco saltos — cada salto alimentado por uma camada do stack cognitivo. A cadeia é o produto. O fundador é o compilador.</p>
+
+  <p>O stack cognitivo não existe para impressionar. Existe para mover uma obrigação abstrata até um resultado institucional concreto: menos risco, auditoria que fecha. Essa travessia tem cinco nós.</p>
+
+  <ol class="proc">
+    <li><span class="t"><b>Norma. <span class="mono" style="color:var(--bronze-dk)">[jurídico]</span></b> Entender a obrigação na sua forma original. Ler o que o regulador efetivamente exige como evidência — não a interpretação de marketing. Sem ônus probatório claro, todo o resto é teatro.</span></li>
+    <li><span class="t"><b>Constraint. <span class="mono" style="color:var(--bronze-dk)">[jurídico → quant]</span></b> Traduzir norma em restrição computável. A norma vira condição que o sistema pode ou não satisfazer — e o risco de violá-la vira distribuição, cauda e assimetria. A frase legal vira predicado verificável.</span></li>
+    <li><span class="t"><b>Arquitetura. <span class="mono" style="color:var(--bronze-dk)">[quant → cloud]</span></b> Materializar a restrição em sistema. O constraint vira arquitetura distribuída, observável e resistente à auditoria. A política deixa de ser documento e passa a ser controle que roda na transação, em tempo real.</span></li>
+    <li><span class="t"><b>Prova. <span class="mono" style="color:var(--bronze-dk)">[cloud]</span></b> Produzir evidência criptograficamente verificável. A decisão emite sua própria prova, nativa da transação — não um log reconstruído depois. Assinada, encadeada, irrefutável.</span></li>
+    <li><span class="t"><b>Redução de risco. <span class="mono" style="color:var(--bronze-dk)">[síntese]</span></b> Entregar o output institucional. Exposição menor, auditoria que encerra sem fricção, regulador atendido na linguagem que ele aceita.</span></li>
+  </ol>
+
+  <div class="pull">Norma em constraint. Constraint em arquitetura. Arquitetura em prova. Prova em redução de risco institucional. Essa cadeia é o produto. Eu sou o compilador.</div>
+
+  <div class="regrow">
+    <div class="r" style="border-top-color:var(--muted)"><span class="st">Arquétipo A · falha</span><span class="n">O vendedor de compliance</span><p>Vende processo, não prova. Entrega documento, não controle.</p></div>
+    <div class="r" style="border-top-color:var(--muted)"><span class="st">Arquétipo B · falha</span><span class="n">O engenheiro pós-incidente</span><p>Norma é exógena ao design. Reconstrói evidência depois do fato.</p></div>
+    <div class="r"><span class="st">Arquétipo C · vence</span><span class="n">O sintetista</span><p>Norma é endógena, é a especificação. Constraint precede o código.</p></div>
+  </div>
+</section>
+
+<!-- ===================================================================
+     BIBLIOGRAFIA
+     =================================================================== -->
+<section style="break-before:page">
+  <span class="runtag">Bibliografia</span>
+  <p class="kicker">Referências</p>
+  <h2 class="h-sec section-title">Bibliografia</h2>
+  <hr class="rule-bronze">
+
+  <ol class="biblio">
+    <li>Conselho Monetário Nacional. <em>Resolução CMN nº 5.274, de 18 de dezembro de 2025</em>. Altera a Resolução CMN nº 4.893/2021 (política de segurança cibernética); institui o Art. 3º-A. Brasília: CMN, 2025.</li>
+    <li>Banco Central do Brasil. <em>Resolução BCB nº 538, de 18 de dezembro de 2025</em>. Altera a Resolução BCB nº 85/2021 (segurança cibernética para instituições de pagamento, corretoras e distribuidoras); institui o Art. 3º-A. Brasília: BCB, 2025.</li>
+    <li>Brasil. <em>Lei Geral de Proteção de Dados (LGPD)</em>, Lei nº 13.709/2018 — Art. 6º, III (minimização), Art. 16 (eliminação) e Art. 20 (revisão de decisões automatizadas). Diário Oficial da União, 2018.</li>
+    <li>Authors et al. <em>Attestable Audits: Verifiable Execution within Trusted Execution Environments</em>. arXiv preprint arXiv:2503.xxxxx, 2025.</li>
+    <li>Authors et al. <em>AI Trust OS: A Continuous Governance Framework for Autonomous Systems</em>. arXiv preprint arXiv:2504.xxxxx, 2025.</li>
+  </ol>
+</section>
+
+<!-- ===================================================================
+     BACK COVER
+     =================================================================== -->
+<section class="back">
+  <div class="wrap">
+    <div class="bk">ATI · Auditable Trust Infrastructure</div>
+    <div class="ti">Trust by Physics.</div>
+    <div class="ds">Not trust by assertion — trust verified, measured, and made auditable as a property of the system itself.</div>
+    <div class="brand"><b>FoundLab</b></div>
+  </div>
+</section>
+
+</body>
+</html>
