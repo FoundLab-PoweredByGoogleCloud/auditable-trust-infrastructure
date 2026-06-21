@@ -4,71 +4,197 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Auditable Trust Infrastructure (ATI)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --sans: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            --primary: #0f172a;
-            --accent: #3b82f6;
+            --azul-deep: #0F141E;
+            --acento: #5E6A78;
+            --destaque: #A88965;
+            --ink: #2C3338;
+            --paper: #FFFFFF;
+            --rule: #E8EBEF;
+            
+            --serif: 'Cormorant Garamond', Georgia, serif;
+            --sans: 'Inter', system-ui, sans-serif;
+            --mono: 'JetBrains Mono', monospace;
         }
         body {
+            margin: 0;
             font-family: var(--sans);
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-            background: #f8fafc;
+            background-color: var(--azul-deep);
+            color: var(--paper);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
         }
-        .container {
-            background: white;
-            padding: 3rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        .hero {
+            padding: 5rem 4rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .eyebrow {
+            font-size: 0.85rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--acento);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+        .rule-top {
+            height: 1px;
+            background-color: var(--destaque);
+            width: 80px;
+            margin-bottom: 3.5rem;
         }
         h1 {
-            color: var(--primary);
-            border-bottom: 2px solid var(--primary);
-            padding-bottom: 0.5rem;
+            font-family: var(--serif);
+            font-size: 5.5rem;
+            font-weight: 400;
+            line-height: 1.05;
+            text-transform: uppercase;
+            margin: 0 0 2.5rem 0;
+            color: var(--paper);
+            letter-spacing: 0.02em;
+        }
+        .subtitle-row {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+        .rule-mid-container {
+            display: flex;
+            align-items: center;
+            width: 80px;
+        }
+        .diamond {
+            width: 6px;
+            height: 6px;
+            background-color: var(--destaque);
+            transform: rotate(45deg);
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        .rule-mid {
+            height: 1px;
+            background-color: var(--destaque);
+            flex-grow: 1;
+        }
+        .lead {
+            font-size: 2.2rem;
+            font-weight: 300;
+            color: #A8AAB0;
+            margin: 0;
+            font-family: var(--sans);
+        }
+        .footer-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--destaque);
+            padding-top: 2rem;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        .footer-links {
+            color: #A8AAB0;
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+        .footer-links span {
+            margin: 0 0.75rem;
+            color: var(--destaque);
+            font-size: 0.8em;
+            vertical-align: middle;
+        }
+        .version-chip {
+            font-family: var(--mono);
+            border: 1px solid var(--destaque);
+            color: var(--destaque);
+            padding: 0.6rem 1.2rem;
+            font-size: 0.9rem;
+            border-radius: 2px;
+        }
+        .actions {
+            margin-top: 4rem;
+            display: flex;
+            gap: 1.5rem;
         }
         .btn {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 0.75rem 1.5rem;
             text-decoration: none;
-            border-radius: 4px;
-            font-weight: bold;
-            margin-top: 1rem;
-            margin-right: 1rem;
+            font-family: var(--sans);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 1.2rem 2.5rem;
+            border-radius: 2px;
+            font-weight: 500;
+            transition: all 0.2s;
         }
-        .btn:hover {
-            background: var(--accent);
+        .btn-primary {
+            background: var(--paper);
+            color: var(--azul-deep);
         }
-        .footer {
-            margin-top: 3rem;
-            font-size: 0.875rem;
-            color: #64748b;
-            text-align: center;
+        .btn-primary:hover {
+            background: var(--destaque);
+            color: var(--paper);
+        }
+        .btn-outline {
+            border: 1px solid var(--acento);
+            color: var(--paper);
+        }
+        .btn-outline:hover {
+            border-color: var(--destaque);
+            color: var(--destaque);
+        }
+        @media (max-width: 900px) {
+            h1 { font-size: 4rem; }
+            .lead { font-size: 1.8rem; }
+        }
+        @media (max-width: 600px) {
+            .hero { padding: 3rem 2rem; }
+            h1 { font-size: 3rem; }
+            .lead { font-size: 1.4rem; }
+            .footer-row { flex-direction: column; align-items: flex-start; }
+            .actions { flex-direction: column; }
+            .btn { text-align: center; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Auditable Trust Infrastructure (ATI)</h1>
-        <p><strong>The category for proving what a regulated AI system did, without keeping the data that proves it.</strong></p>
+    <div class="hero">
+        <div class="eyebrow">FoundLab</div>
+        <div class="rule-top"></div>
         
-        <p>Auditable Trust Infrastructure (ATI) is an architectural category — a Layer-0 standard for how AI, data, and trust interact inside regulated institutions.</p>
+        <h1>Auditable Trust<br>Infrastructure</h1>
         
-        <p>It exists to resolve a conflict that policy and process cannot: the law requires you to <strong>retain</strong> the evidence of a decision for years, and simultaneously requires you to <strong>erase</strong> the personal data behind it on request.</p>
-
-        <div>
-            <a href="whitepaper.html" class="btn">Read Web Version</a>
-            <a href="downloads/FoundLab_ATI_Whitepaper_v1.1_A4.pdf" class="btn">Download PDF</a>
+        <div class="subtitle-row">
+            <div class="rule-mid-container">
+                <div class="diamond"></div>
+                <div class="rule-mid"></div>
+            </div>
+            <div class="lead">Don't Trust, Verify.</div>
         </div>
         
-        <div class="footer">
-            <p>Authored by <strong>FoundLab</strong> — Auditable Trust Infrastructure.</p>
-            <p>Licensed under CC BY-NC-ND 4.0.</p>
+        <div class="footer-row">
+            <div class="footer-links">
+                Category definition <span>&#9670;</span> Reference architecture <span>&#9670;</span> Public canon
+            </div>
+            <div class="version-chip">v0.1.0-public-canon</div>
+        </div>
+
+        <div class="actions">
+            <a href="whitepaper.html" class="btn btn-primary">Read Web Version</a>
+            <a href="downloads/FoundLab_ATI_Whitepaper_v1.1_A4.pdf" class="btn btn-outline">Download PDF</a>
         </div>
     </div>
 </body>
