@@ -144,3 +144,17 @@ img {
     display: block;
     margin: 2em auto;
 }
+
+/* Cover Specific Styles */
+.cv-title { font-size: 2.5rem; font-family: var(--sans); color: var(--primary); font-weight: bold; margin: 1rem 0; line-height: 1.2; }
+.cv-sub { font-size: 1.5rem; color: var(--gray-600); margin-bottom: 2rem; }
+.cv-kick, .cv-brand, .cv-loc { font-family: var(--sans); color: var(--gray-600); text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.85rem; }
+.cv-brand { margin-top: 2rem; font-weight: bold; }
+.cv-abstract { background: var(--gray-100); padding: 2rem; border-left: 4px solid var(--accent); margin-top: 3rem; }
+.cv-foot { display: flex; gap: 2rem; margin-top: 3rem; font-family: var(--sans); font-size: 0.9rem; }
+.cv-foot .val { display: block; font-weight: bold; }
+.card { border: 1px solid var(--gray-200); padding: 1.5rem; margin-bottom: 1rem; border-radius: 4px; }
+.card .who { display: block; font-size: 0.85rem; text-transform: uppercase; color: var(--gray-600); }
+.card .ti { display: block; font-size: 1.25rem; font-weight: bold; color: var(--primary); margin: 0.5rem 0; }
+.vnote { background: #fffbeb; border-left: 4px solid #f59e0b; padding: 1rem; margin: 1.5rem 0; }
+

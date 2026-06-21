@@ -626,7 +626,7 @@ return { τ, t, ctx, σ, payload_persisted: false };</pre>
 
   <div class="cols2">
     <p>No instante t₀, o dado-em-claro d é submetido a uma função de compromisso hash <code>h = H(d ∥ r)</code>, onde r é entropia efêmera amostrada dentro do enclave; o par (d, r) existe apenas em memória volátil isolada. Em t₁, executa-se a assinatura operacional σ = Sign(k<sub>e</sub>, h), vinculando o compromisso ao evento regulatório. Em t₂, o protocolo de queima sobrescreve d, r e k<sub>e</sub> com três passagens de padrão pseudo-aleatório, descartando a entropia geradora — após t₂, apenas h persiste.</p>
-    <p>A propriedade <em>zero-knowledge</em> decorre da resistência à pré-imagem de H: o auditor verifica σ contra h sem jamais observar d. A trilha de auditoria registra somente (h, σ, t), garantindo conformidade LGPD <em>by construction</em>: o controlador não <em>opta</em> por não reter — é <strong>incapaz</strong> de reter. A minimização deixa de ser política e torna-se invariante estrutural.</p>
+    <p>A propriedade <em>zero-exposure</em> decorre da resistência à pré-imagem de H: o auditor verifica σ contra h sem jamais observar d. A trilha de auditoria registra somente (h, σ, t), garantindo conformidade LGPD <em>by construction</em>: o controlador não <em>opta</em> por não reter — é <strong>incapaz</strong> de reter. A minimização deixa de ser política e torna-se invariante estrutural.</p>
   </div>
 
   <div class="eq tight">
@@ -751,7 +751,7 @@ return { τ, t, ctx, σ, payload_persisted: false };</pre>
       <div class="ch">[R] Pesquisa</div>
       <ul>
         <li><b>Custódia de reasoning <span class="v">2026</span></b><small>prova criptográfica de cadeia inferencial</small></li>
-        <li><b>Zero-knowledge audit <span class="v">2026</span></b><small>auditoria sem exposição de payload</small></li>
+        <li><b>Zero-exposure audit <span class="v">2026</span></b><small>auditoria sem exposição de payload</small></li>
         <li><b>Federated Guard <span class="v">exploratório</span></b><small>conformidade cross-jurisdiction</small></li>
         <li><b>Adversarial Replay <span class="v">exploratório</span></b><small>stress-test automatizado de políticas</small></li>
       </ul>
@@ -878,7 +878,7 @@ return { τ, t, ctx, σ, payload_persisted: false };</pre>
   <h3 class="h-sub"><span class="lede">5.4 · Você paga pela prova entregue — SaaS via Google Cloud Marketplace</span></h3>
   <p class="standfirst">A oferta é distribuída exclusivamente como SaaS através do Google Cloud Marketplace, com cobrança <em>consumption-based</em> integrada ao billing GCP existente do contratante.</p>
 
-  <p>Não há licença vitalícia, taxa de setup, mínimo contratual mensal ou compromisso de assentos: cada prova de auditoria efetivamente emitida pelo motor de evidência é debitada como linha unitária na fatura consolidada do Google. O procurement entra pelo <em>private offer</em> do Marketplace, aproveitando o <em>committed spend</em> (EDP) já negociado entre banco e Google, o que reduz o ciclo de homologação de fornecedor de 90–180 dias para tipicamente 5–10 dias úteis. Compliance, fiscal, jurídico e segurança da informação herdam as certificações do canal Google (ISO 27001/27017/27018, SOC 2 Type II, PCI-DSS) e o due diligence já executado pelo próprio marketplace, eliminando rounds de questionários de risco de fornecedor terceiro. O contrato é regido por EULA padrão Marketplace + addendum LGPD e Res. CMN 4.893/2021 (alt. 5.274/2025).</p>
+  <p>Não há licença vitalícia, taxa de setup, mínimo contratual mensal ou compromisso de assentos: cada prova de auditoria efetivamente emitida pelo motor de evidência é debitada como linha unitária na fatura consolidada do Google. O procurement entra pelo <em>enterprise offering</em> do Marketplace, aproveitando o <em>committed spend</em> (EDP) já negociado entre banco e Google, o que reduz o ciclo de homologação de fornecedor de 90–180 dias para tipicamente 5–10 dias úteis. Compliance, fiscal, jurídico e segurança da informação herdam as certificações do canal Google (ISO 27001/27017/27018, SOC 2 Type II, PCI-DSS) e o due diligence já executado pelo próprio marketplace, eliminando rounds de questionários de risco de fornecedor terceiro. O contrato é regido por EULA padrão Marketplace + addendum LGPD e Res. CMN 4.893/2021 (alt. 5.274/2025).</p>
 
   <div class="eq tight">
     <span class="ex">custo<sub>mensal</sub> = Σ ( n<sub>provas,tier</sub> × preço<sub>recibo,tier</sub> ) &nbsp;|&nbsp; zero fixo, zero CAPEX, escala estrita com uso</span>
@@ -888,7 +888,7 @@ return { τ, t, ctx, σ, payload_persisted: false };</pre>
   <div class="regrow">
     <div class="r"><span class="st">Tier I · Essentials</span><span class="n">R$ 0,80 / recibo</span><p>Até 50k provas/mês. Motor de evidência base, retenção 1 ano, trilha imutável em BigQuery, SLA 99,5%, suporte L1 via console. Para áreas piloto e linhas de negócio individuais.</p></div>
     <div class="r"><span class="st">Tier II · Enterprise</span><span class="n">R$ 0,55 / recibo</span><p>50k–500k provas/mês. Inclui VPC-SC, CMEK, retenção 5 anos, integração com SIEM e GRC, SLA 99,9%, TAM dedicado, relatórios Bacen pré-formatados. Padrão para banco médio/grande.</p></div>
-    <div class="r"><span class="st">Tier III · Regulated+</span><span class="n">Private offer</span><p>Volume &gt; 500k/mês. Sovereign controls, residência de dados BR, assured workloads, retenção 10 anos, SLA 99,95%, on-call 24×7, customizações de tipologia regulatória e atestados sob demanda.</p></div>
+    <div class="r"><span class="st">Tier III · Regulated+</span><span class="n">Enterprise offering</span><p>Volume &gt; 500k/mês. Sovereign controls, residência de dados BR, assured workloads, retenção 10 anos, SLA 99,95%, on-call 24×7, customizações de tipologia regulatória e atestados sob demanda.</p></div>
   </div>
 
   <p class="small muted">Procurement via Marketplace ⇒ consolidação no billing GCP, abate de committed spend, faturamento em BRL, dispensa de novo cadastro de fornecedor. Upgrade entre tiers é programático — sem renegociação contratual.</p>
