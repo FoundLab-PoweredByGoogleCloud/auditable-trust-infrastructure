@@ -2,8 +2,26 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Auditable Trust Infrastructure (ATI) — FoundLab Whitepaper</title>
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="./assets/screen.css">
+<style>
+/* === web-edition additions === */
+a.toclink{color:inherit;text-decoration:none;border-bottom:1px solid transparent;transition:border-color .15s}
+a.toclink:hover{border-bottom-color:var(--destaque)}
+.explorer .xrow{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:1.5rem}
+.explorer label{display:flex;flex-direction:column;font-family:var(--sans);font-size:.8rem;color:var(--acento);text-transform:uppercase;letter-spacing:.08em;gap:.45rem}
+.explorer output{font-family:var(--mono);font-size:1.05rem;color:var(--azul-deep);text-transform:none;letter-spacing:0}
+.explorer input[type=range]{width:100%;accent-color:var(--destaque);cursor:pointer}
+.explorer .xhint{font-size:.7rem;color:var(--ink-soft);text-transform:none;letter-spacing:0;font-weight:300}
+.explorer .xout{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;border-top:1px solid var(--rule);padding-top:1.25rem}
+.explorer .xo{display:flex;flex-direction:column;gap:.25rem}
+.explorer .xk{font-family:var(--sans);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--acento)}
+.explorer .xv{font-family:var(--mono);font-size:1.5rem;color:var(--azul-deep)}
+.explorer.ok .statusbar{color:#1a7a4a}.explorer.bad .statusbar{color:#a83232}
+.explorer.bad #o-ratio{color:#a83232}
+@media (max-width:768px){.explorer .xrow,.explorer .xout{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 
@@ -37,7 +55,7 @@
 </section>
 
 <!-- ===================== RESUMO EXECUTIVO ===================== -->
-<section class="exec">
+<section class="exec" id="resumo">
   <span class="runtag">Resumo Executivo</span>
   <p class="kicker">ATI · Auditable Trust Infrastructure</p>
   <h2 class="h-sec section-title">Resumo Executivo</h2>
@@ -51,14 +69,14 @@
     <p>Apresentamos a ATI — <em>Auditable Trust Infrastructure</em> —, infraestrutura unificada de evidência que governa ambas as superfícies sob um único registro criptograficamente verificável. A ATI não retém dado pessoal do cliente — em aderência à LGPD — e não expõe material criptográfico sensível ao operador, em conformidade com a Resolução CMN 5.274. O registro é mínimo, imutável e suficiente para reconstrução probatória.</p>
   </div>
 
-  <p style="margin-top:3mm">Três requisitos definem a categoria:</p>
+  <p style="margin-top:0.75rem">Três requisitos definem a categoria:</p>
   <div class="triad">
     <div class="t"><span class="n">01 · Prova</span><span class="h">Decisão verificável</span><p>Cada decisão automatizada gera evidência semântica verificável por terceiros.</p></div>
     <div class="t"><span class="n">02 · Não-retenção</span><span class="h">LGPD por construção</span><p>O registro probatório não armazena dado pessoal do titular, preservando os direitos da LGPD.</p></div>
     <div class="t"><span class="n">03 · Custódia</span><span class="h">CMN 5.274</span><p>O material criptográfico permanece isolado do operador, sob o regime exigido pela CMN 5.274.</p></div>
   </div>
 
-  <div class="cv-badges" style="margin-top:4mm">
+  <div class="cv-badges" style="margin-top:1rem">
     <span style="color:var(--bronze-dk);border-color:var(--hair)">Prova de decisão</span>
     <span style="color:var(--bronze-dk);border-color:var(--hair)">Voz + Texto</span>
     <span style="color:var(--bronze-dk);border-color:var(--hair)">LGPD</span>
@@ -68,73 +86,73 @@
 </section>
 
 <!-- ========================= SUMÁRIO ========================= -->
-<section class="toc" style="break-before:page">
+<section class="toc">
   <span class="runtag">Sumário</span>
   <p class="tk">Whitepaper · Conteúdo</p>
   <h2>Sumário</h2>
 
   <div class="grp">
-    <div class="lvl1"><span class="rn">—</span><span class="tt">Resumo Executivo</span><span class="pg" data-toc="Resumo Executivo"></span></div>
+    <div class="lvl1"><span class="rn">—</span><span class="tt">Resumo Executivo</span></div>
   </div>
 
   <div class="grp">
-    <div class="lvl1"><span class="rn">I</span><span class="tt">O Problema e a Âncora Regulatória</span><span class="pg" data-toc="O Problema e a Âncora Regulatória"></span></div>
-    <div class="lvl2"><span class="tt">1.1 · O imperativo da prova — evidência supera política</span><span class="dots"></span><span class="pg" data-toc="1.1 · O imperativo da prova"></span></div>
-    <div class="lvl2"><span class="tt">1.2 · Âncora regulatória — LGPD, Bacen, ANPD</span><span class="dots"></span><span class="pg" data-toc="1.2 · Âncora regulatória"></span></div>
-    <div class="lvl2"><span class="tt">1.3 · A pergunta central que orienta o whitepaper</span><span class="dots"></span><span class="pg" data-toc="1.3 · A pergunta central"></span></div>
+    <div class="lvl1"><span class="rn">I</span><span class="tt">O Problema e a Âncora Regulatória</span></div>
+    <div class="lvl2"><span class="tt">1.1 · O imperativo da prova — evidência supera política</span></div>
+    <div class="lvl2"><span class="tt">1.2 · Âncora regulatória — LGPD, Bacen, ANPD</span></div>
+    <div class="lvl2"><span class="tt">1.3 · A pergunta central que orienta o whitepaper</span></div>
   </div>
 
   <div class="grp">
-    <div class="lvl1"><span class="rn">II</span><span class="tt">A Tese: Auditable Trust Infrastructure</span><span class="pg" data-toc="A Tese: Auditable Trust Infrastructure"></span></div>
-    <div class="lvl2"><span class="tt">2.1 · Definindo a categoria — Auditable Trust Infrastructure</span><span class="dots"></span><span class="pg" data-toc="2.1 · Definindo a categoria"></span></div>
-    <div class="lvl2"><span class="tt">2.2 · Uma infraestrutura, duas superfícies</span><span class="dots"></span><span class="pg" data-toc="2.2 · Uma infraestrutura, duas superfícies"></span></div>
-    <div class="lvl2"><span class="tt">2.3 · Arquitetura de referência — ingest → verdict → receipt → custody</span><span class="dots"></span><span class="pg" data-toc="2.3 · Arquitetura de referência"></span></div>
-    <div class="lvl2"><span class="tt">2.4 · Threat model — adversário interno e garantias</span><span class="dots"></span><span class="pg" data-toc="2.4 · Threat model"></span></div>
+    <div class="lvl1"><span class="rn">II</span><span class="tt">A Tese: Auditable Trust Infrastructure</span></div>
+    <div class="lvl2"><span class="tt">2.1 · Definindo a categoria — Auditable Trust Infrastructure</span></div>
+    <div class="lvl2"><span class="tt">2.2 · Uma infraestrutura, duas superfícies</span></div>
+    <div class="lvl2"><span class="tt">2.3 · Arquitetura de referência — ingest → verdict → receipt → custody</span></div>
+    <div class="lvl2"><span class="tt">2.4 · Threat model — adversário interno e garantias</span></div>
   </div>
 
   <div class="grp">
-    <div class="lvl1"><span class="rn">III</span><span class="tt">REX Voice — Infraestrutura de Evidência de Voz</span><span class="pg" data-toc="REX Voice — Infraestrutura de Evidência de Voz"></span></div>
-    <div class="lvl2"><span class="tt">3.1 · O aceite por voz como evidência irrefutável</span><span class="dots"></span><span class="pg" data-toc="3.1 · O aceite por voz como evidência"></span></div>
-    <div class="lvl2"><span class="tt">3.2 · Da fala ao recibo — pipeline em seis etapas</span><span class="dots"></span><span class="pg" data-toc="3.2 · Da fala ao recibo"></span></div>
-    <div class="lvl2"><span class="tt">3.3 · Protocolo arquitetural e selagem criptográfica</span><span class="dots"></span><span class="pg" data-toc="3.3 · Protocolo arquitetural"></span></div>
-    <div class="lvl2"><span class="tt">3.4 · Console de verificação interativa</span><span class="dots"></span><span class="pg" data-toc="3.4 · Console de verificação"></span></div>
+    <div class="lvl1"><span class="rn">III</span><span class="tt">REX Voice — Infraestrutura de Evidência de Voz</span></div>
+    <div class="lvl2"><span class="tt">3.1 · O aceite por voz como evidência irrefutável</span></div>
+    <div class="lvl2"><span class="tt">3.2 · Da fala ao recibo — pipeline em seis etapas</span></div>
+    <div class="lvl2"><span class="tt">3.3 · Protocolo arquitetural e selagem criptográfica</span></div>
+    <div class="lvl2"><span class="tt">3.4 · Console de verificação interativa</span></div>
   </div>
 
   <div class="grp">
-    <div class="lvl1"><span class="rn">IV</span><span class="tt">REX Guard — Atestação de Decisão</span><span class="pg" data-toc="REX Guard — Atestação de Decisão"></span></div>
-    <div class="lvl2"><span class="tt">4.1 · Cada decisão do Gemini sai com um atestado verificável</span><span class="dots"></span><span class="pg" data-toc="4.1 · Atestação por decisão"></span></div>
-    <div class="lvl2"><span class="tt">4.2 · Bloqueio pré-inferência — política aplicada ex ante</span><span class="dots"></span><span class="pg" data-toc="4.2 · Bloqueio pré-inferência"></span></div>
-    <div class="lvl2"><span class="tt">4.3 · Console — a cadeia de controle verificável</span><span class="dots"></span><span class="pg" data-toc="4.3 · Console de controle"></span></div>
-    <div class="lvl2"><span class="tt">4.4 · Burn Engine — minimização por construção criptográfica</span><span class="dots"></span><span class="pg" data-toc="4.4 · Burn Engine"></span></div>
-    <div class="lvl2"><span class="tt">4.5 · Matriz de conformidade — exigência → mecanismo</span><span class="dots"></span><span class="pg" data-toc="4.5 · Matriz de conformidade"></span></div>
-    <div class="lvl2"><span class="tt">4.6 · Shield roadmap — da inferência ao trace de agente</span><span class="dots"></span><span class="pg" data-toc="4.6 · Shield roadmap"></span></div>
-    <div class="lvl2"><span class="tt">4.7 · Declaração de maturidade — produção, dev, pesquisa</span><span class="dots"></span><span class="pg" data-toc="4.7 · Declaração de maturidade"></span></div>
+    <div class="lvl1"><span class="rn">IV</span><span class="tt">REX Guard — Atestação de Decisão</span></div>
+    <div class="lvl2"><span class="tt">4.1 · Cada decisão do Gemini sai com um atestado verificável</span></div>
+    <div class="lvl2"><span class="tt">4.2 · Bloqueio pré-inferência — política aplicada ex ante</span></div>
+    <div class="lvl2"><span class="tt">4.3 · Console — a cadeia de controle verificável</span></div>
+    <div class="lvl2"><span class="tt">4.4 · Burn Engine — minimização por construção criptográfica</span></div>
+    <div class="lvl2"><span class="tt">4.5 · Matriz de conformidade — exigência → mecanismo</span></div>
+    <div class="lvl2"><span class="tt">4.6 · Shield roadmap — da inferência ao trace de agente</span></div>
+    <div class="lvl2"><span class="tt">4.7 · Declaração de maturidade — produção, dev, pesquisa</span></div>
   </div>
 
   <div class="grp">
-    <div class="lvl1"><span class="rn">V</span><span class="tt">Economia e Modelo de Oferta</span><span class="pg" data-toc="Economia e Modelo de Oferta"></span></div>
-    <div class="lvl2"><span class="tt">5.1 · Custo unitário por jornada atestada</span><span class="dots"></span><span class="pg" data-toc="5.1 · Custo unitário"></span></div>
-    <div class="lvl2"><span class="tt">5.2 · Cenários de volume e ponto de equilíbrio</span><span class="dots"></span><span class="pg" data-toc="5.2 · Cenários de volume"></span></div>
-    <div class="lvl2"><span class="tt">5.3 · Sensibilidade — explorador paramétrico</span><span class="dots"></span><span class="pg" data-toc="5.3 · Sensibilidade paramétrica"></span></div>
-    <div class="lvl2"><span class="tt">5.4 · Modelo SaaS via Google Cloud Marketplace</span><span class="dots"></span><span class="pg" data-toc="5.4 · Modelo SaaS"></span></div>
+    <div class="lvl1"><span class="rn">V</span><span class="tt">Economia e Modelo de Oferta</span></div>
+    <div class="lvl2"><span class="tt">5.1 · Custo unitário por jornada atestada</span></div>
+    <div class="lvl2"><span class="tt">5.2 · Cenários de volume e ponto de equilíbrio</span></div>
+    <div class="lvl2"><span class="tt">5.3 · Sensibilidade — explorador paramétrico</span></div>
+    <div class="lvl2"><span class="tt">5.4 · Modelo SaaS via Google Cloud Marketplace</span></div>
   </div>
 
   <div class="grp">
-    <div class="lvl1"><span class="rn">VI</span><span class="tt">O Arquiteto: O Sintetista Regulatório</span><span class="pg" data-toc="O Arquiteto: O Sintetista Regulatório"></span></div>
-    <div class="lvl2"><span class="tt">6.1 · O sintetista — tese central e pilha cognitiva</span><span class="dots"></span><span class="pg" data-toc="6.1 · O sintetista"></span></div>
-    <div class="lvl2"><span class="tt">6.2 · Credenciais verificáveis e ranking global</span><span class="dots"></span><span class="pg" data-toc="6.2 · Credenciais verificáveis"></span></div>
-    <div class="lvl2"><span class="tt">6.3 · A cadeia de transformação: norma → prova</span><span class="dots"></span><span class="pg" data-toc="6.3 · A cadeia de transformação"></span></div>
+    <div class="lvl1"><span class="rn">VI</span><span class="tt">O Arquiteto: O Sintetista Regulatório</span></div>
+    <div class="lvl2"><span class="tt">6.1 · O sintetista — tese central e pilha cognitiva</span></div>
+    <div class="lvl2"><span class="tt">6.2 · Credenciais verificáveis e ranking global</span></div>
+    <div class="lvl2"><span class="tt">6.3 · A cadeia de transformação: norma → prova</span></div>
   </div>
 
   <div class="grp">
-    <div class="lvl1"><span class="rn">—</span><span class="tt">Referências</span><span class="pg" data-toc="Referências"></span></div>
+    <div class="lvl1"><span class="rn">—</span><span class="tt">Referências</span></div>
   </div>
 </section>
 
 <!-- ===================================================================
      SECTION I
      =================================================================== -->
-<section class="opener">
+<section class="opener" id="sec-1">
   <span class="runtag">I · O Problema</span>
   <div class="op-num">I</div>
   <div class="op-kick">Situation · Complication · Question</div>
@@ -174,7 +192,7 @@
 </section>
 
 <!-- 1.2 -->
-<section style="break-before:page">
+<section>
   <span class="runtag">I · O Problema</span>
   <p class="kicker">I · O Problema · 1.2</p>
   <h3 class="h-sub"><span class="lede">1.2 · Âncora regulatória</span></h3>
@@ -195,7 +213,7 @@
 </section>
 
 <!-- 1.3 -->
-<section style="break-before:page">
+<section>
   <span class="runtag">I · O Problema</span>
   <p class="kicker">I · O Problema · 1.3</p>
   <h3 class="h-sub"><span class="lede">1.3 · A pergunta central</span></h3>
@@ -215,7 +233,7 @@
 <!-- ===================================================================
      SECTION II
      =================================================================== -->
-<section class="opener">
+<section class="opener" id="sec-2">
   <span class="runtag">II · A Tese ATI</span>
   <div class="op-num">II</div>
   <div class="op-kick">One Infrastructure, Two Surfaces</div>
@@ -257,7 +275,7 @@
 </section>
 
 <!-- 2.2 -->
-<section style="break-before:page">
+<section>
   <span class="runtag">II · A Tese ATI</span>
   <p class="kicker">II · A Tese ATI · 2.2</p>
   <h3 class="h-sub"><span class="lede">2.2 · Uma infraestrutura, duas superfícies</span></h3>
@@ -277,7 +295,7 @@
 </section>
 
 <!-- 2.3 -->
-<section style="break-before:page">
+<section>
   <span class="runtag">II · A Tese ATI</span>
   <p class="kicker">II · A Tese ATI · 2.3</p>
   <h3 class="h-sub"><span class="lede">2.3 · Arquitetura de referência</span></h3>
@@ -303,7 +321,7 @@
 </section>
 
 <!-- 2.4 -->
-<section style="break-before:page">
+<section>
   <span class="runtag">II · A Tese ATI</span>
   <p class="kicker">II · A Tese ATI · 2.4</p>
   <h3 class="h-sub"><span class="lede">2.4 · Threat model</span></h3>
@@ -327,7 +345,7 @@
 <!-- ===================================================================
      SECTION III — REX VOICE
      =================================================================== -->
-<section class="opener">
+<section class="opener" id="sec-3">
   <span class="runtag">III · REX Voice</span>
   <div class="op-num">III</div>
   <div class="op-kick">Voice Evidence Infrastructure</div>
@@ -362,7 +380,7 @@
     <span class="eqno">(3)</span>
   </div>
 
-  <p class="kicker" style="margin-top:5mm">E daí, pra mim?</p>
+  <p class="kicker" style="margin-top:1.25rem">E daí, pra mim?</p>
   <div class="impact">
     <div class="card"><span class="who">Para o banco</span><span class="ti">Destrava jornadas represadas pelo jurídico</span><p>Contratação de crédito, renegociação, portabilidade e alteração de limite passam a rodar por voz com defesa probatória robusta. Reduz chargebacks e contestações: a assinatura criptográfica é oponível em juízo. Elimina o custo de armazenar e proteger horas de áudio sensível, e abre o canal telefônico e a URA como superfícies de venda de pleno direito.</p></div>
     <div class="card"><span class="who">Para o Google</span><span class="ti">Nova superfície de consumo recorrente de Vertex AI</span><p>Cada aceite por voz dispara Speech-to-Text + raciocínio de intenção em Gemini, com volume proporcional ao tráfego de contact center e URA do banco. Posiciona o GCP como infraestrutura padrão para evidência regulatória em voz no setor financeiro brasileiro — referência replicável para os demais incumbentes.</p></div>
@@ -370,7 +388,7 @@
 </section>
 
 <!-- 3.2 -->
-<section style="break-before:page">
+<section>
   <span class="runtag">III · REX Voice</span>
   <p class="kicker">III · REX Voice · 3.2</p>
   <h3 class="h-sub"><span class="lede">3.2 · Da fala ao recibo, sem reter a fala</span></h3>
@@ -412,7 +430,7 @@ return { τ, t, ctx, σ, payload_persisted: false };</pre>
 </section>
 
 <!-- 3.3 -->
-<section style="break-before:page">
+<section>
   <span class="runtag">III · REX Voice</span>
   <p class="kicker">III · REX Voice · 3.3</p>
   <h3 class="h-sub"><span class="lede">3.3 · Protocolo arquitetural: da captura ao recibo selado</span></h3>
@@ -449,7 +467,7 @@ return { τ, t, ctx, σ, payload_persisted: false };</pre>
 
   <p><strong>3.3.4 Modelo de gestão de chaves.</strong> A chave de assinatura Ed25519 é gerada dentro de um HSM FIPS 140-2 Nível 3, não-exportável, com rotação trimestral. Chaves públicas são publicadas em log de transparência; verificadores reconstroem σ a partir dos campos do recibo, recomputam h, e checam Sig<sub>k</sub>(h) contra o calendário de rotação pelo <code>key_id</code> embutido no cabeçalho. A cadeia de hash mais o TST permitem auditoria offline sem confiar no emissor.</p>
 
-  <div class="cv-badges" style="margin-top:4mm">
+  <div class="cv-badges" style="margin-top:1rem">
     <span style="color:var(--bronze-dk);border-color:var(--hair)">Ed25519</span>
     <span style="color:var(--bronze-dk);border-color:var(--hair)">SHA-256 chain</span>
     <span style="color:var(--bronze-dk);border-color:var(--hair)">RFC 3161 TSA</span>
@@ -465,7 +483,7 @@ return { τ, t, ctx, σ, payload_persisted: false };</pre>
 </section>
 
 <!-- 3.4 -->
-<section style="break-before:page">
+<section>
   <span class="runtag">III · REX Voice</span>
   <p class="kicker">III · REX Voice · 3.4</p>
   <h3 class="h-sub"><span class="lede">3.4 · Console de verificação interativa</span></h3>
@@ -474,7 +492,7 @@ return { τ, t, ctx, σ, payload_persisted: false };</pre>
   <p>O console abaixo apresenta o pipeline REX Voice ponta a ponta. O usuário avança por cada etapa e observa o fluxo completo: captura de fala → transcrição → classificação de intenção → cálculo de hash criptográfico → emissão de recibo. Em todas as etapas, dois invariantes permanecem visíveis e verificáveis numa barra de status fixa: a flag <code>payload_persisted = false</code> e o contador <code>audio_retained = 0 bytes</code>. A prova é construída sem que o áudio bruto seja jamais persistido.</p>
 
   <div class="figure">
-    <div class="fhd">Figura 3.1 — REX Voice · console interativo (versão web)</div>
+    <div class="fhd">Figura 3.1 — REX Voice · pipeline ponta a ponta</div>
     <div class="fbody">
       <div class="pipeline">
         <div class="step">[1] capture → stream</div>
@@ -482,17 +500,17 @@ return { τ, t, ctx, σ, payload_persisted: false };</pre>
         <div class="step">[3] hash(·) → discard</div>
         <div class="step">[4] sign → receipt</div>
       </div>
-      <p class="small muted" style="margin:3mm 0 0 0"><b>3.4.1 Pipeline.</b> Quatro estágios sequenciais — captura, extração de prova, descarte, recibo. Cada estágio expõe seu estado interno em painéis monoespaçados. <b>3.4.2 Invariantes.</b> O recibo final contém <code>SHA-256(transcript ∥ intent ∥ ts)</code> e é assinado, sem retenção do áudio original — propriedade verificável <em>ex post</em>.</p>
+      <p class="small muted" style="margin:0.75rem 0 0 0"><b>3.4.1 Pipeline.</b> Quatro estágios sequenciais — captura, extração de prova, descarte, recibo. Cada estágio expõe seu estado interno em painéis monoespaçados. <b>3.4.2 Invariantes.</b> O recibo final contém <code>SHA-256(transcript ∥ intent ∥ ts)</code> e é assinado, sem retenção do áudio original — propriedade verificável <em>ex post</em>.</p>
     </div>
     <div class="statusbar">ATI · Auditable Trust Infrastructure &nbsp;·&nbsp; <b>payload_persisted = false</b> &nbsp;·&nbsp; <b>audio_retained = 0 B</b></div>
   </div>
-  <p class="figcap">A versão interativa do console está disponível na edição web do whitepaper. Nesta edição impressa, o fluxo é representado de forma estática; os invariantes exibidos são idênticos aos da demonstração ao vivo.</p>
+  <p class="figcap">Representação estática do pipeline REX Voice. Os invariantes <code>payload_persisted = false</code> e <code>audio_retained = 0 B</code> são os mesmos verificados em execução — nenhum áudio é retido em etapa alguma.</p>
 </section>
 
 <!-- ===================================================================
      SECTION IV — REX GUARD
      =================================================================== -->
-<section class="opener">
+<section class="opener" id="sec-4">
   <span class="runtag">IV · REX Guard</span>
   <div class="op-num">IV</div>
   <div class="op-kick">Decision Attestation Layer</div>
@@ -545,7 +563,7 @@ return { τ, t, ctx, σ, payload_persisted: false };</pre>
 }</pre>
   </div>
 
-  <p class="kicker" style="margin-top:5mm">E daí, pra mim?</p>
+  <p class="kicker" style="margin-top:1.25rem">E daí, pra mim?</p>
   <div class="impact">
     <div class="card"><span class="who">Para o banco</span><span class="ti">Conformidade defensável</span><p>Prova, perante regulador ou cliente lesado, o porquê exato de cada decisão automatizada — sem reconstrução manual, sem disputa sem evidência, sem dependência do log interno.</p></div>
     <div class="card"><span class="who">Para o Google</span><span class="ti">Vertex AI operável em ambiente regulado</span><p>O atestado fecha a lacuna de auditoria que hoje barra o Gemini em setores fiscalizados — banking, seguros, saúde, jurídico.</p></div>
@@ -553,7 +571,7 @@ return { τ, t, ctx, σ, payload_persisted: false };</pre>
 </section>
 
 <!-- 4.2 -->
-<section style="break-before:page">
+<section>
   <span class="runtag">IV · REX Guard</span>
   <p class="kicker">IV · REX Guard · 4.2</p>
   <h3 class="h-sub"><span class="lede">4.2 · Bloqueado antes de chegar ao Gemini</span></h3>
@@ -593,7 +611,7 @@ return { τ, t, ctx, σ, payload_persisted: false };</pre>
 </section>
 
 <!-- 4.3 -->
-<section style="break-before:page">
+<section>
   <span class="runtag">IV · REX Guard</span>
   <p class="kicker">IV · REX Guard · 4.3</p>
   <h3 class="h-sub"><span class="lede">4.3 · A cadeia de controle inteira, verificável — no ambiente real</span></h3>
@@ -602,7 +620,7 @@ return { τ, t, ctx, σ, payload_persisted: false };</pre>
   <p>Cada transição é assinada, encadeada por hash ao estado anterior e replicável de forma independente — o operador audita sem confiar no console em si, apenas na matemática que ele expõe. Verificabilidade ponta a ponta: do gatilho à custódia, cada transição é independentemente auditável. O console não <em>afirma</em> a integridade; ele expõe os artefatos que a provam.</p>
 
   <div class="figure">
-    <div class="fhd">Figura 4.1 — REX Guard · console de controle (versão web)</div>
+    <div class="fhd">Figura 4.1 — REX Guard · cadeia de controle</div>
     <div class="fbody">
       <div class="pipeline">
         <div class="step">REQ #a4f2 → approved ✓</div>
@@ -610,15 +628,15 @@ return { τ, t, ctx, σ, payload_persisted: false };</pre>
         <div class="step">ATTS signed · TPM-anchored</div>
         <div class="step">CUST sealed · q-ledger</div>
       </div>
-      <p class="small muted" style="margin:3mm 0 0 0">Quatro colunas vivas — <b>requisições · vereditos · atestados · custódia</b>. Cada transição satisfaz <code>verify(v) = sig(state) ∧ hash↔chain</code>. Latência típica end-to-end: <b>42 ms p50</b>.</p>
+      <p class="small muted" style="margin:0.75rem 0 0 0">Quatro colunas vivas — <b>requisições · vereditos · atestados · custódia</b>. Cada transição satisfaz <code>verify(v) = sig(state) ∧ hash↔chain</code>. Latência típica end-to-end: <b>42 ms p50</b>.</p>
     </div>
     <div class="statusbar">ATI · Auditable Trust Infrastructure &nbsp;·&nbsp; <b>LIVE CHAIN</b> &nbsp;·&nbsp; SIGNED VERDICTS &nbsp;·&nbsp; CUSTODY SEALED &nbsp;·&nbsp; <b>TPM-ANCHORED</b> &nbsp;·&nbsp; 42 MS P50</div>
   </div>
-  <p class="figcap">A versão interativa do console está disponível na edição web do whitepaper. Nesta edição impressa, o fluxo é representado de forma estática; os artefatos exibidos são idênticos aos da demonstração ao vivo.</p>
+  <p class="figcap">Representação estática da cadeia de controle REX Guard. Os artefatos — verdict assinado, atestado, custódia selada — correspondem aos emitidos em execução.</p>
 </section>
 
 <!-- 4.4 -->
-<section style="break-before:page">
+<section>
   <span class="runtag">IV · REX Guard</span>
   <p class="kicker">IV · REX Guard · 4.4</p>
   <h3 class="h-sub"><span class="lede">4.4 · Burn Engine — minimização de dados por construção criptográfica</span></h3>
@@ -662,7 +680,7 @@ return { τ, t, ctx, σ, payload_persisted: false };</pre>
 </section>
 
 <!-- 4.5 -->
-<section style="break-before:page">
+<section>
   <span class="runtag">IV · REX Guard</span>
   <p class="kicker">IV · REX Guard · 4.5</p>
   <h3 class="h-sub"><span class="lede">4.5 · Cada exigência regulatória mapeia para um mecanismo técnico — sem lacuna</span></h3>
@@ -688,7 +706,7 @@ return { τ, t, ctx, σ, payload_persisted: false };</pre>
 </section>
 
 <!-- 4.6 -->
-<section style="break-before:page">
+<section>
   <span class="runtag">IV · REX Guard</span>
   <p class="kicker">IV · REX Guard · 4.6 · <span style="color:var(--bronze-dk)">Roadmap · não produção atual</span></p>
   <h3 class="h-sub"><span class="lede">4.6 · REX Guard Shield — estendendo a atestação da inferência ao trace completo do agente</span></h3>
@@ -720,7 +738,7 @@ return { τ, t, ctx, σ, payload_persisted: false };</pre>
 </section>
 
 <!-- 4.7 -->
-<section style="break-before:page">
+<section>
   <span class="runtag">IV · REX Guard</span>
   <p class="kicker">IV · REX Guard · 4.7</p>
   <h3 class="h-sub"><span class="lede">4.7 · O que opera hoje e o que é roadmap — declarado, sem inflar</span></h3>
@@ -764,7 +782,7 @@ return { τ, t, ctx, σ, payload_persisted: false };</pre>
 <!-- ===================================================================
      SECTION V — ECONOMIA E MODELO DE OFERTA
      =================================================================== -->
-<section class="opener">
+<section class="opener" id="sec-5">
   <span class="runtag">V · Economia</span>
   <div class="op-num">V</div>
   <div class="op-kick">Cost of Proof vs. Value Unlocked</div>
@@ -824,7 +842,7 @@ return { τ, t, ctx, σ, payload_persisted: false };</pre>
 </section>
 
 <!-- 5.2 -->
-<section style="break-before:page">
+<section>
   <span class="runtag">V · Economia</span>
   <p class="kicker">V · Economia · 5.2 · <span style="color:var(--bronze-dk)">Ilustrativo · recalibrável</span></p>
   <h3 class="h-sub"><span class="lede">5.2 · No cenário base, a camada custa 2,2% do valor que destrava — e a fração cai com escala</span></h3>
@@ -848,31 +866,41 @@ return { τ, t, ctx, σ, payload_persisted: false };</pre>
 </section>
 
 <!-- 5.3 -->
-<section style="break-before:page">
+<section>
   <span class="runtag">V · Economia</span>
   <p class="kicker">V · Economia · 5.3 · <span style="color:var(--bronze-dk)">Ilustrativo · recalibrável</span></p>
   <h3 class="h-sub"><span class="lede">5.3 · Sensibilidade interativa — explorador de cenário</span></h3>
   <p class="standfirst">Explorador paramétrico do custo da camada ATI sob variação conjunta de volume, custo unitário e duração de custódia.</p>
 
-  <p>A ferramenta da edição web permite que stakeholders ajustem três premissas centrais do modelo — volume anual de jornadas, custo por inferência e taxa de adoção / duração de custódia — e observem, em tempo real, como o custo total da camada e, sobretudo, a razão custo / valor destravado se deslocam. O objetivo é tornar transparente a estrutura de elasticidade do sistema: identificar regiões do espaço paramétrico em que a camada permanece economicamente viável (&lt; 5% do valor destravado) e regiões em que a operação degrada margem.</p>
+  <p>A ferramenta abaixo permite que stakeholders ajustem três premissas centrais do modelo — volume anual de jornadas, custo por inferência e taxa de adoção / duração de custódia — e observem, em tempo real, como o custo total da camada e, sobretudo, a razão custo / valor destravado se deslocam. O objetivo é tornar transparente a estrutura de elasticidade do sistema: identificar regiões do espaço paramétrico em que a camada permanece economicamente viável (&lt; 5% do valor destravado) e regiões em que a operação degrada margem.</p>
 
-  <div class="figure">
-    <div class="fhd">Figura 5.1 — Explorador de sensibilidade (versão web)</div>
+  <div class="figure explorer" id="explorer">
+    <div class="fhd">Figura 5.1 — Explorador de sensibilidade · interativo</div>
     <div class="fbody">
-      <div class="regrow" style="margin:0">
-        <div class="r"><span class="st">[I] Volume</span><span class="n">0,1M – 50M</span><p>Jornadas processadas/ano. Default 5M. Escala linear; afeta custo e valor proporcionalmente.</p></div>
-        <div class="r"><span class="st">[II] Custo unitário</span><span class="n">R$ 0,05 – 2,00</span><p>R$ por inferência, incluindo custódia. Default R$ 0,40. Único termo não-linear sob duração estendida.</p></div>
-        <div class="r"><span class="st">[III] Adoção / custódia</span><span class="n">10% – 100%</span><p>Fração efetivamente roteada pela camada. Default 60%. Proxy para duração média de custódia ativa.</p></div>
+      <div class="xrow">
+        <label>[I] Volume <output id="x-vol">5,0M</output>
+          <input type="range" id="s-vol" min="0.1" max="50" step="0.1" value="5">
+          <span class="xhint">jornadas/ano · 0,1M – 50M</span></label>
+        <label>[II] Custo unitário <output id="x-cost">R$ 0,40</output>
+          <input type="range" id="s-cost" min="0.05" max="2" step="0.01" value="0.40">
+          <span class="xhint">R$/inferência · 0,05 – 2,00</span></label>
+        <label>[III] Adoção / custódia <output id="x-adopt">60%</output>
+          <input type="range" id="s-adopt" min="10" max="100" step="1" value="60">
+          <span class="xhint">fração roteada · 10% – 100%</span></label>
       </div>
-      <p class="small muted" style="margin:3mm 0 0 0">Premissa de valor médio por jornada destravada fixada em <b>v̄ = R$ 8,50</b> para fins de demonstração — recalibrável por contrato. Resultado reportado: razão custo/valor (%), custo absoluto (R$) e valor destravado (R$).</p>
+      <div class="xout">
+        <div class="xo"><span class="xk">Razão custo / valor</span><span class="xv" id="o-ratio">4,7%</span></div>
+        <div class="xo"><span class="xk">Custo da camada / ano</span><span class="xv" id="o-cost">R$ 25,5M</span></div>
+        <div class="xo"><span class="xk">Valor destravado / ano</span><span class="xv" id="o-value">R$ 25,5M</span></div>
+      </div>
+      <p class="small muted" style="margin:0.75rem 0 0 0">Premissa de valor médio por jornada destravada <b>v̄ = R$ 8,50</b>, recalibrável por contrato. A razão custo/valor depende do custo unitário relativo a v̄; volume e adoção escalam custo e valor proporcionalmente.</p>
     </div>
-    <div class="statusbar">ATI · Auditable Trust Infrastructure &nbsp;·&nbsp; <b>v̄ = R$ 8,50</b> &nbsp;·&nbsp; janela viável &lt; 5% do valor destravado</div>
+    <div class="statusbar"><b>v̄ = R$ 8,50</b> &nbsp;·&nbsp; <span id="o-badge">✓ viável · razão &lt; 5%</span></div>
   </div>
-  <p class="figcap">A versão interativa do explorador está disponível na edição web do whitepaper. Nesta edição impressa, os eixos e defaults são representados de forma estática.</p>
 </section>
 
 <!-- 5.4 -->
-<section style="break-before:page">
+<section>
   <span class="runtag">V · Economia</span>
   <p class="kicker">V · Economia · 5.4</p>
   <h3 class="h-sub"><span class="lede">5.4 · Você paga pela prova entregue — SaaS via Google Cloud Marketplace</span></h3>
@@ -897,7 +925,7 @@ return { τ, t, ctx, σ, payload_persisted: false };</pre>
 <!-- ===================================================================
      SECTION VI — O ARQUITETO
      =================================================================== -->
-<section class="opener">
+<section class="opener" id="sec-6">
   <span class="runtag">VI · O Arquiteto</span>
   <div class="op-num">VI</div>
   <div class="op-kick">O Sintetista Regulatório</div>
@@ -933,7 +961,7 @@ return { τ, t, ctx, σ, payload_persisted: false };</pre>
 </section>
 
 <!-- 6.2 -->
-<section style="break-before:page">
+<section>
   <span class="runtag">VI · O Arquiteto</span>
   <p class="kicker">VI · O Arquiteto · 6.2</p>
   <h3 class="h-sub"><span class="lede">6.2 · Credenciais verificáveis e ranking global</span></h3>
@@ -961,7 +989,7 @@ return { τ, t, ctx, σ, payload_persisted: false };</pre>
 </section>
 
 <!-- 6.3 -->
-<section style="break-before:page">
+<section>
   <span class="runtag">VI · O Arquiteto</span>
   <p class="kicker">VI · O Arquiteto · 6.3</p>
   <h3 class="h-sub"><span class="lede">6.3 · A cadeia de transformação: norma → prova</span></h3>
@@ -989,7 +1017,7 @@ return { τ, t, ctx, σ, payload_persisted: false };</pre>
 <!-- ===================================================================
      BIBLIOGRAFIA
      =================================================================== -->
-<section style="break-before:page">
+<section>
   <span class="runtag">Bibliografia</span>
   <p class="kicker">Referências</p>
   <h2 class="h-sec section-title">Bibliografia</h2>
@@ -1007,7 +1035,7 @@ return { τ, t, ctx, σ, payload_persisted: false };</pre>
 <!-- ===================================================================
      BACK COVER
      =================================================================== -->
-<section class="back">
+<section class="back" id="refs">
   <div class="wrap">
     <div class="bk">ATI · Auditable Trust Infrastructure</div>
     <div class="ti">Trust by Physics.</div>
@@ -1016,5 +1044,31 @@ return { τ, t, ctx, σ, payload_persisted: false };</pre>
   </div>
 </section>
 
+<script>
+(function(){
+  var t=[],e=document.querySelector('section.exec');if(e){t.push(e.id);}
+  document.querySelectorAll('section.opener').forEach(function(s){t.push(s.id);});
+  var b=document.querySelector('section.back');if(b){t.push(b.id);}
+  document.querySelectorAll('.toc .lvl1').forEach(function(row,i){
+    var tt=row.querySelector('.tt'); if(tt&&t[i]){var a=document.createElement('a');a.href='#'+t[i];a.className='toclink';a.textContent=tt.textContent;tt.textContent='';tt.appendChild(a);}
+  });
+})();
+(function(){
+  var V=8.5,sv=document.getElementById('s-vol'),sc=document.getElementById('s-cost'),sa=document.getElementById('s-adopt');if(!sv)return;
+  function brl(x){if(x>=1e6)return 'R$ '+(x/1e6).toFixed(2).replace('.',',')+'M';if(x>=1e3)return 'R$ '+(x/1e3).toFixed(1).replace('.',',')+'k';return 'R$ '+x.toFixed(2).replace('.',',');}
+  function upd(){var vol=parseFloat(sv.value)*1e6,cost=parseFloat(sc.value),ad=parseFloat(sa.value)/100;var J=vol*ad,custo=J*cost,valor=J*V,ratio=cost/V*100;
+    document.getElementById('x-vol').textContent=parseFloat(sv.value).toFixed(1).replace('.',',')+'M';
+    document.getElementById('x-cost').textContent='R$ '+cost.toFixed(2).replace('.',',');
+    document.getElementById('x-adopt').textContent=Math.round(ad*100)+'%';
+    document.getElementById('o-ratio').textContent=ratio.toFixed(1).replace('.',',')+'%';
+    document.getElementById('o-cost').textContent=brl(custo);
+    document.getElementById('o-value').textContent=brl(valor);
+    var bd=document.getElementById('o-badge'),w=document.getElementById('explorer');
+    if(ratio<5){bd.innerHTML='✓ viável · razão &lt; 5%';w.classList.add('ok');w.classList.remove('bad');}
+    else{bd.innerHTML='✗ degrada margem · razão ≥ 5%';w.classList.add('bad');w.classList.remove('ok');}
+  }
+  [sv,sc,sa].forEach(function(s){s.addEventListener('input',upd);});upd();
+})();
+</script>
 </body>
 </html>
