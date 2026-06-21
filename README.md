@@ -102,4 +102,6 @@ This is deliberate. A category whose central claim is *verifiable trust* cannot 
 Authored by **FoundLab** — *Auditable Trust Infrastructure*.
 Licensed under **Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International**. See [LICENSE](LICENSE).
 
+> This repository publishes category-level documentation and reference architecture materials. It is not an open-source software implementation and does not grant rights to use FoundLab private systems, trademarks, customer deployments, or NDA materials.
+
 > *don't trust, verify.*
