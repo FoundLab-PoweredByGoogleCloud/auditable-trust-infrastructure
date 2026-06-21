@@ -63,6 +63,7 @@ Full treatment in **[category/02 — Trust by Physics](category/02_trust-by-phys
 
 The ATI whitepaper defines Auditable Trust Infrastructure as a category for verifiable AI evidence in regulated environments.
 
+- Markdown source: `whitepaper/ati/FoundLab_ATI_Whitepaper_v1.1.md`
 - PDF: `whitepaper/ati/FoundLab_ATI_Whitepaper_v1.1_A4.pdf`
 - Source HTML/CSS: `whitepaper/ati/source/`
 

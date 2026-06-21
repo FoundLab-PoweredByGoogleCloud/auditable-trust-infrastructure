@@ -1,5 +1,5 @@
 {
-    "$id": "https://f2f-raat.foundlab.ai/schemas/identity_challenge.json",
+    "$id": "https://ati.foundlab.com.br/schemas/identity_challenge.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "title": "Identity Challenge Success Fact",
     "type": "object",

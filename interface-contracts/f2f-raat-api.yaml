@@ -13,7 +13,7 @@ info:
     *   **Idempotent**: Replaying a request is safe.
 
 servers:
-  - url: https://api.execution.foundlab.ai/v1
+  - url: https://api.ati.foundlab.com.br/v1
     description: Production Runtime (Zero-Persistence)
 
 paths:

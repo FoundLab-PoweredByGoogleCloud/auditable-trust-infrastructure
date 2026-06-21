@@ -20,7 +20,7 @@ This is **Trust by Physics**, built on three core pillars.
 In place of fallible human processes, Veritas provides an immutable, mathematical record that an event occurred and a decision was made, without holding the toxic data itself.
 
 - **Mechanism:** Every decision generates a W3C Verifiable Credential, whose cryptographic hash is recorded in an immutable **WORM ledger** (Write-Once-Read-Many): an audit/query projection (e.g. BigQuery) with **terminal evidence sealed by signed export to Cloud Storage Bucket Lock** where required. IAM roles and retention locks prevent modification or deletion of sealed records.
-- **Mandate Solved:** This satisfies the BACEN/SOX retention requirement by preserving a verifiable, tamper-proof audit trail for the required 5-10 year period.
+- **Mandate Addressed:** This supports the CMN/BCB cybersecurity and SOX retention obligations by preserving a verifiable, tamper-evident audit trail over the required multi-year horizon, sealed under retention controls per deployment.
 
 ---
 
@@ -30,8 +30,8 @@ This is the engineering keystone that solves the paradox's final conflict. It al
 
 - **Mechanism:** The data written to the WORM ledger is encrypted using a Customer-Managed Encryption Key (CMEK) via Google Cloud KMS. To honor an erasure request, the client **destroys the CMEK**.
 - **Mandate Solved:**
-    - The encrypted data (**ciphertext**) remains physically in the WORM ledger, satisfying the **retention mandate** (BACEN/SOX).
-    - Without the key, the ciphertext becomes **irrecoverable mathematical entropy**—"cryptographic garbage". This satisfies the **erasure mandate** (LGPD).
+    - The encrypted data (**ciphertext**) remains physically in the WORM ledger, satisfying the **retention mandate** (CMN/BCB cybersecurity framework, SOX).
+    - Once the key is destroyed within the KMS lifecycle, the retained ciphertext can no longer be decrypted — a **control of technical inaccessibility** that supports the **erasure mandate** (LGPD Art. 16 / Art. 18 VI). The control is scheduled within the key lifecycle, not an instantaneous physical wipe.
 
 > **Metaphor:** The ciphertext stays in a locked drawer (the WORM ledger), satisfying the auditor. The key is disabled and scheduled for destruction under the KMS lifecycle (crypto-shredding), making the contents technically inaccessible — a technical control, not a legal-erasure verdict.
 

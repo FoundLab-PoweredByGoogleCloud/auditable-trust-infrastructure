@@ -1,9 +1,9 @@
 # Veritas: The Protocol of Truth
 > **"Do not trust. Verify."**
 
-**Veritas** is the cryptographic audit layer of F2F-RAaT. It ensures that every decision made by the engine is immutable, re-executable, and mathematically provable.
+**Veritas** is the cryptographic audit layer of ATI — the **Veritas Evidence Chain** — used by the F2F-RAaT execution framework. It is designed so that every decision is append-only, re-verifiable, and cryptographically bound to the policy and inputs that produced it.
 
-In a regulated environment, it is not enough to make the right decision. You must be able to **prove** why you made it, five years later, in court.
+In a regulated environment, it is not enough to make the right decision. You must be able to **prove** which decision you made, and under which policy, years later, on independent inspection.
 
 ---
 

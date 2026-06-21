@@ -2,7 +2,7 @@
 
 > **"Solving the conflict between Privacy and Proof."**
 
-This folder is the conceptual core of the repository — the narrative that *creates the category* before any code defines it. Read it as a thesis in four moves: the problem, the architecture that dissolves it, the way it tames generative AI, and the strategic consequence.
+This folder is the conceptual core of the repository — the narrative that *creates the category* before any code defines it. Start with **[the category thesis](./00_category-thesis.md)** — the founding document — then read the four-move argument: the problem, the architecture that dissolves it, the way it tames generative AI, and the strategic consequence.
 
 ---
 
@@ -46,6 +46,7 @@ This is the **Rationale Extraction (REX)** pattern, and it is the seam where the
 
 ## The narrative, in order
 
+0. **[The Category Thesis](./00_category-thesis.md)** — the founding document: the failure of policy-based trust, why GRC/XAI/SIEM/observability do not solve it, the definition, and the invariants as the membership test.
 1. **[The Regulatory Paradox](./01_the-regulatory-paradox.md)** — why institutions are trapped between retention and erasure.
    *(Legal specifics in the [Compliance Matrix](../compliance/COMPLIANCE_MATRIX.md).)*
 2. **[Trust by Physics](./02_trust-by-physics-pillars.md)** — how physics is used to satisfy law.

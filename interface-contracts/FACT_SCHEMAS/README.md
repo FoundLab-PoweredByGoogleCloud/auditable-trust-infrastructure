@@ -1,7 +1,7 @@
 # Fact Schemas
 > **"Standardized Inputs for the Reputation Engine."**
 
-This directory contains strict JSON Schemas (Draft 2020-12) for common `Fact` types used in the F2F-RAaT ecosystem.
+This directory contains strict JSON Schemas (Draft 2020-12) for common `Fact` types used in the ATI execution framework (F2F-RAaT).
 
 These schemas define the expected structure of the `dimensions` object for specific `fact_type`s.
 
@@ -14,4 +14,4 @@ These schemas define the expected structure of the `dimensions` object for speci
 
 ## 🛠️ Usage
 
-When submitting a `Fact` to the API, validaate your `dimensions` payload against these schemas to ensure the Spezzatura Engine can correctly compute the vectors.
+When submitting a `Fact` to the API, validate your `dimensions` payload against these schemas to ensure the Spezzatura Engine can correctly compute the vectors.

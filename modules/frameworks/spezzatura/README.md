@@ -1,7 +1,7 @@
 # Spezzatura: The T² Reputation Engine
 > **"Confidence is a calculated vector, not a feeling."**
 
-The **Spezzatura Engine** is the deterministic core of F2F-RAaT. It transforms raw behavior into a computable score.
+The **Spezzatura Engine** is the deterministic reputation core within ATI — the scoring mechanism used by the F2F-RAaT execution framework. It transforms raw behavior into a computable score.
 
 Unlike traditional credit scoring or fraud models that use opaque machine learning, Spezzatura uses **transparent, vector-based algebra**. Every point in the score can be traced back to a specific, auditable event.
 

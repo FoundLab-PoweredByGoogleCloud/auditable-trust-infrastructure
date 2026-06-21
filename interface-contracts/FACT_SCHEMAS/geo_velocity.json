@@ -1,5 +1,5 @@
 {
-  "$id": "https://f2f-raat.foundlab.ai/schemas/geo_velocity.json",
+  "$id": "https://ati.foundlab.com.br/schemas/geo_velocity.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Geo Violation Fact",
   "type": "object",
