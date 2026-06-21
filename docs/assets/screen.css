@@ -1,4 +1,4 @@
-/* Screen optimized styles for the ATI Whitepaper */
+﻿/* Screen optimized styles for the ATI Whitepaper */
 
 /* =========================================================================
    1. VARIABLES & FONTS
@@ -7,11 +7,11 @@
 
 :root {
     /* Brand Colors (FoundLab Premium Editorial) */
-    --azul-deep: #0F141E;   /* Carvão profundo — title, body strong, accent estrutural */
-    --acento:    #5E6A78;   /* Slate grey — table headers, eyebrows, metadata labels */
-    --destaque:  #A88965;   /* Bronze/champagne — ÚNICA cor de assinatura */
+    --azul-deep: #0F141E;   /* CarvÃ£o profundo â€” title, body strong, accent estrutural */
+    --acento:    #5E6A78;   /* Slate grey â€” table headers, eyebrows, metadata labels */
+    --destaque:  #A88965;   /* Bronze/champagne â€” ÃšNICA cor de assinatura */
     --ink:       #2C3338;   /* Body text default */
-    --ink-soft:  #606B75;   /* Body text secundário, leads, captions */
+    --ink-soft:  #606B75;   /* Body text secundÃ¡rio, leads, captions */
     --rule:      #E8EBEF;   /* Hairline rules, table borders, dividers */
     --paper:     #FFFFFF;   /* Background paper */
     --tint:      #F8F9FA;   /* Code background, callout info background */
@@ -527,4 +527,12 @@ tr:last-child td {
 .invariant { background: var(--tint); border: 1px solid var(--rule); padding: 2rem; margin: 2.5rem 0; border-radius: 2px; }
 .invariant .lab { display: block; font-family: var(--sans); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--destaque); margin-bottom: 1rem; font-weight: 600; }
 .invariant p { margin: 0; font-family: var(--serif); font-size: 1.2rem; color: var(--azul-deep); }
+
+
+
+/* Additional unstyled elements */
+.cv-abstract p { margin-top: 1rem; }
+.runtag { font-family: var(--sans); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--acento); margin-bottom: 0.5rem; display: block; }
+.kicker { font-family: var(--sans); font-size: 0.85rem; color: var(--ink-soft); margin-bottom: 2rem; }
+.pull { font-family: var(--serif); font-size: 1.5rem; font-style: italic; color: var(--azul-deep); text-align: center; margin: 3rem auto; max-width: 80%; padding: 2rem 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
 
