@@ -389,7 +389,7 @@ O mapeamento é MECE: cada referência citada foi verificada contra a fonte ofic
 | 4.5.4 | LGPD · Art. 20 | Direito à revisão e contestabilidade de decisões automatizadas; trilha de evidência reconstituível. | **Recibo verificável** (Ed25519 · atestação TEE) | [3] |
 | 4.5.5 | LGPD · Art. 6º, III · Art. 16 | Minimização e eliminação do dado pessoal após o término do tratamento — não por política, por construção. | **Burn Engine** (`payload_persisted = false`) | [3] |
 
-> **Notas de verificação.** [1] CMN 5.274/2025 e [2] BCB 538/2025 — normas espelho de cibersegurança, que emendam respectivamente a CMN 4.893/2021 e a BCB 85/2021; o Art. 3º-A é introduzido por ambas. [3] LGPD (Lei 13.709/2018). Dispositivos conferidos contra o texto publicado no DOU. Cobertura MECE confirmada — 5/5 exigências aplicáveis mapeadas, sem sobreposição entre mecanismos.
+> **Notas de verificação.** [1] CMN 5.274/2025 e [2] BCB 538/2025 — normas espelho de cibersegurança, que emendam respectivamente a CMN 4.893/2021 e a BCB 85/2021; o Art. 3º-A é introduzido por ambas. [3] LGPD (Lei 13.709/2018). Dispositivos conferidos contra o texto publicado no DOU. **Distinção artigo-base × artigo novo:** a rastreabilidade da informação (4.5.3) é controle do artigo-base — Art. 3º, III da CMN 4.893/2021 (texto-base, não emendado nesse ponto) —, ao passo que a custódia de chaves (4.5.1, Art. 3º-A, I, 'f') e a integridade fim a fim (4.5.2, Art. 3º-A, I, 'e') são controles *novos* trazidos pelo Art. 3º-A; a coexistência das duas referências é intencional, não inconsistência. Cobertura MECE confirmada — 5/5 exigências aplicáveis mapeadas, sem sobreposição entre mecanismos.
 
 ## 4.6 · REX Guard Shield — estendendo a atestação da inferência ao trace completo do agente
 
