@@ -29,7 +29,7 @@ This document maps the architectural pillars of **Auditable Trust Infrastructure
 | **LGPD** | Art. 20 | Right to review of decisions taken solely by automated processing, and to request information about the criteria used. | **REX pattern + Bounded-Output Rationale**: each decision binds the digest of a structured, human-readable rationale and the active policy version, so the criteria of a past decision can be reconstructed and reviewed. |
 | **GDPR** | Art. 22 | Safeguards around solely-automated decision-making. | **Deterministic execution**: a decision is a traceable product of explicit facts under a signed policy version — reconstructable rather than post-hoc rationalized. |
 
-> **Note.** **CMN 4.893/2021** and **BCB 85/2021** are *cybersecurity* norms (as amended by **CMN 5.274/2025** and **BCB 538/2025** respectively, with an adequacy deadline of 01/03/2026). They are **not** AI-explainability mandates; the explainability anchor in Brazil is **LGPD Art. 20**. Do not cite the cybersecurity norms as standalone explainability requirements.
+> **Note.** **CMN 4.893/2021** and **BCB 85/2021** are *cybersecurity* norms (as amended by **CMN 5.274/2025** and **BCB 538/2025** respectively, whose voluntary-adequacy window closed on 01/03/2026; the permanent traceability regime is now in force). They are **not** AI-explainability mandates; the explainability anchor in Brazil is **LGPD Art. 20**. Do not cite the cybersecurity norms as standalone explainability requirements.
 
 ---
 
