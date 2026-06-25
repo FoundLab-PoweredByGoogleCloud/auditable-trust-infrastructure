@@ -29,7 +29,7 @@ Apresentamos a ATI — *Auditable Trust Infrastructure* —, infraestrutura unif
 | **02 · Não-retenção** | LGPD por construção | O registro probatório não armazena dado pessoal do titular, preservando os direitos da LGPD. |
 | **03 · Custódia** | CMN 5.274 | O material criptográfico permanece isolado do operador, sob o regime exigido pela CMN 5.274. |
 
-`Prova de decisão` · `Voz + Texto` · `LGPD` · `CMN 5.274` · `Prazo 01/03/2026`
+`Prova de decisão` · `Voz + Texto` · `LGPD` · `CMN 5.274` · `Janela de adequação encerrada (01/03/2026)`
 
 ---
 
@@ -61,7 +61,7 @@ Nenhuma das três é atendida por firewall, SIEM ou observabilidade aplicacional
 
 ## 1.2 · Âncora regulatória
 
-> A norma do Banco Central já tornou a evidência técnica obrigatória — prazo de adequação em 01/03/2026. CMN 5.274 e BCB 538 reescrevem o regime de cibersegurança (custódia de chaves, integridade e rastreabilidade); a LGPD Art. 20 ancora a explicabilidade de decisões automatizadas.
+> A norma do Banco Central já tornou a evidência técnica obrigatória — a janela de adequação voluntária encerrou-se em 01/03/2026 e o regime permanente de rastreabilidade está em vigor. CMN 5.274 e BCB 538 reescrevem o regime de cibersegurança (custódia de chaves, integridade e rastreabilidade); a LGPD Art. 20 ancora a explicabilidade de decisões automatizadas.
 
 O arcabouço regulatório brasileiro consolidou, em poucos anos, exigências formais de rastreabilidade e auditoria aplicáveis a instituições financeiras e a operadores de dados pessoais. A Resolução CMN nº 5.274/2025 reescreveu a política obrigatória de cibersegurança do sistema financeiro nacional — emendando a CMN 4.893/2021 —, e a Resolução BCB nº 538/2025 é sua norma espelho para instituições de pagamento, corretoras e distribuidoras (emendando a BCB 85/2021). Não se trata de regime de contratação de nuvem: ambas reescrevem o regime de cibersegurança, introduzindo o Art. 3º-A com catorze controles mínimos verificáveis. Entre eles, a vedação de acesso de terceiros — inclusive provedores de nuvem — às chaves privadas de assinatura (Art. 3º-A, I, 'f') e a validação de integridade transacional fim a fim antes da assinatura digital (Art. 3º-A, I, 'e').
 
@@ -70,7 +70,7 @@ Paralelamente, o Artigo 20 da LGPD instituiu o direito do titular à revisão de
 | Norma | Escopo | Status |
 | :--- | :--- | :--- |
 | **CMN 5.274/2025** | Política obrigatória de cibersegurança — governança, registro de incidentes e verificação contínua de fornecedores críticos. Emenda a CMN 4.893/2021. | Vigente |
-| **BCB 538/2025** | Regime de cibersegurança — norma espelho da CMN 5.274 para IPs e corretoras (emenda a BCB 85/2021). Art. 3º-A: vedação de acesso a chaves privadas + integridade fim a fim. | Prazo 01/03/2026 |
+| **BCB 538/2025** | Regime de cibersegurança — norma espelho da CMN 5.274 para IPs e corretoras (emenda a BCB 85/2021). Art. 3º-A: vedação de acesso a chaves privadas + integridade fim a fim. | Vigente · janela de adequação encerrada (01/03/2026) |
 | **LGPD Art. 20** | Direito à revisão de decisões automatizadas — exige explicabilidade e rastreabilidade técnica reconstituível por decisão. | Vigente |
 
 > **Nota.** Cada referência é citação verificada contra a fonte oficial. As Resoluções CMN 5.274 e BCB 538 são normas de **cibersegurança** (emendam respectivamente a CMN 4.893/2021 e a BCB 85/2021); **não** são, por si, mandatos de explicabilidade de IA — a âncora de explicabilidade é a LGPD Art. 20. A evidência auditável deixou de ser recomendação: tornou-se requisito normativo vigente para qualquer instituição que opere sistemas de GenAI sobre dados pessoais ou decisões financeiras.
@@ -389,7 +389,7 @@ O mapeamento é MECE: cada referência citada foi verificada contra a fonte ofic
 | 4.5.4 | LGPD · Art. 20 | Direito à revisão e contestabilidade de decisões automatizadas; trilha de evidência reconstituível. | **Recibo verificável** (Ed25519 · atestação TEE) | [3] |
 | 4.5.5 | LGPD · Art. 6º, III · Art. 16 | Minimização e eliminação do dado pessoal após o término do tratamento — não por política, por construção. | **Burn Engine** (`payload_persisted = false`) | [3] |
 
-> **Notas de verificação.** [1] CMN 5.274/2025 e [2] BCB 538/2025 — normas espelho de cibersegurança, que emendam respectivamente a CMN 4.893/2021 e a BCB 85/2021; o Art. 3º-A é introduzido por ambas. [3] LGPD (Lei 13.709/2018). Dispositivos conferidos contra o texto publicado no DOU. Cobertura MECE confirmada — 5/5 exigências aplicáveis mapeadas, sem sobreposição entre mecanismos.
+> **Notas de verificação.** [1] CMN 5.274/2025 e [2] BCB 538/2025 — normas espelho de cibersegurança, que emendam respectivamente a CMN 4.893/2021 e a BCB 85/2021; o Art. 3º-A é introduzido por ambas. [3] LGPD (Lei 13.709/2018). Dispositivos conferidos contra o texto publicado no DOU. **Distinção artigo-base × artigo novo:** a rastreabilidade da informação (4.5.3) é controle do artigo-base — Art. 3º, III da CMN 4.893/2021 (texto-base, não emendado nesse ponto) —, ao passo que a custódia de chaves (4.5.1, Art. 3º-A, I, 'f') e a integridade fim a fim (4.5.2, Art. 3º-A, I, 'e') são controles *novos* trazidos pelo Art. 3º-A; a coexistência das duas referências é intencional, não inconsistência. Cobertura MECE confirmada — 5/5 exigências aplicáveis mapeadas, sem sobreposição entre mecanismos.
 
 ## 4.6 · REX Guard Shield — estendendo a atestação da inferência ao trace completo do agente
 

@@ -52,7 +52,7 @@ How to prove it is safe and compliant.
 
 - **[Veritas proof spec](modules/frameworks/veritas/veritas_proof_spec.md)** — how the audit trail works.
 - **[Threat model](modules/frameworks/threat-model/README.md)** — defense against poisoning and adversarial vectors.
-- **[Compliance matrix](compliance/COMPLIANCE_MATRIX.md)** — regulatory mapping (LGPD / GDPR / EU AI Act / CMN-BCB / SOX).
+- **[Compliance matrix](compliance/COMPLIANCE_MATRIX.md)** — regulatory mapping (LGPD / GDPR / EU AI Act / CMN-BCB / PLD/FT (BCB 3.978) / SOX).
 - **[Cognitive Auditability](category/03_cognitive-auditability.md)** — proving AI intent.
 
 ---

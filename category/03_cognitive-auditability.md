@@ -8,10 +8,10 @@ The Veritas 3.0 evolution of the ATI is designed to solve this by imposing deter
 
 ### Mitigating Opacity: The Rationale Extraction (REX) Pattern
 
-The core innovation is the **Rationale Extraction (REX) Pattern**, which transforms the AI from an opaque oracle into a transparent, accountable agent.
+The core innovation is the **Rationale Extraction (REX) pattern**, which transforms the AI from an opaque oracle into a transparent, accountable agent.
 
 - **The Problem:** Advanced models may expose only limited inspectability into their internal reasoning, and some encapsulate intermediate reasoning in ways that are not directly auditable.
-- **The Solution:** The REX Pattern forces the AI to **externalize its reasoning** into a structured, human-readable text field (`rationale_text`) *before* it can output a final decision. This rationale must be legally defensible.
+- **The Solution:** The REX pattern forces the AI to **externalize its reasoning** into a structured, human-readable text field (`rationale_text`) *before* it can output a final decision. This rationale must be legally defensible.
 - **Deterministic Proof:** The AI is run with `temperature` set near zero (0.0-0.1) to ensure its output is replicable. The **cryptographic hash** of this rationale (`rationale_hash`) is then recorded in the Veritas WORM ledger, creating an immutable proof that auditable reasoning took place.
 
 ---
