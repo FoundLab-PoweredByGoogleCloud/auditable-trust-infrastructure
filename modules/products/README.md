@@ -12,7 +12,7 @@ The **REX** line is named for the **Rationale Extraction** pattern at the heart 
 | :--- | :--- | :--- | :--- |
 | **[rex-guard/](rex-guard/)** | Specification + whitepaper | f2f-raat · veritas · burn-engine | Cryptographic separation and deterministic legal-state governance for immutable auditability in generative AI — reconciling the immutability of evidence with the mutability of privacy obligations. |
 
-> Additional REX-family surfaces (agent-execution evidence, voice acceptance governance) are part of the broader roadmap and are not specified in this public canon.
+> Additional REX family surfaces (agent-execution evidence, voice acceptance governance) are part of the broader roadmap and are not specified in this public canon.
 
 ---
 
